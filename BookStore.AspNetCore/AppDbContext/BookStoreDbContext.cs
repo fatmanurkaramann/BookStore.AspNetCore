@@ -10,5 +10,6 @@ namespace BookStore.AspNetCore.AppDbContext
         }
 
         public DbSet<Book> Books { get; set; }
+
     }
 }
