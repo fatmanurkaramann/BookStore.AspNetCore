@@ -2,37 +2,42 @@
 @{
     ViewData["Title"] = "GetAddPage";
 }
-@model Book
+@model BookViewModel
 <form asp-controller="Book" enctype="multipart/form-data" asp-action="AddBook" method="post">
   <div class="row mb-4">
     <div class="col">
       <div class="form-outline">
-        <label class="form-label" for="form6Example1">Book Name</label>
-
+        <label class="form-label" for="form6Example1" asp-for="Name">Book Name</label>
         <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
+         <span asp-validation-for="Name" class="text-danger"></span>
       </div>
     </div>
   </div>
  <input type="file" name="imageFile" accept="image/*" id="imageInput">
+         <span asp-validation-for="ImagePath" class="text-danger"></span>
+
  <img id="previewImage" style="max-width: 200px; max-height: 200px;"/>
   <div class="form-outline mb-4">
     <label class="form-label" for="form6Example3">Author</label>
     <input type="text" id="form6Example3" class="form-control" asp-for="Author"/>
+    <span asp-validation-for="Author" class="text-danger"></span>
   </div>
 
   <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Page Count</label>
 
     <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
+         <span asp-validation-for="PageCount" class="text-danger"></span>
+
   </div>
     <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Price</label>
-
     <input type="number" id="form6Example4" class="form-control" asp-for="Price"/>
+    <span asp-validation-for="Price" class="text-danger"></span>
   </div>
   <div class="mb-3 mt-3">
             <input class="form-control" asp-for="PublishDate" >
-        </div>
+   </div>
  
 
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
@@ -44,3 +49,9 @@
         previewImage.src=URL.createObjectURL(e.target.files[0])
     })
 </script>
+
+@section Scripts
+    {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
