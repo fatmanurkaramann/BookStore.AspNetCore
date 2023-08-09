@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "GetUpdatePage";
+}
+@model Book
+<h1>GetUpdatePage</h1>
+<form asp-controller="Book" asp-action="UpdateBook" method="post" enctype="multipart/form-data">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+    <input type="hidden" asp-for="Id"/>
+
+        <label class="form-label" for="form6Example1">Book Name</label>
+
+        <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
+      </div>
+    </div>
+  </div>
+    <div>
+        <input type="hidden" asp-for="ImagePath"/>
+        <input type="file" name="imageFile" accept="image/*" id="imageInput">
+          <img src="/@Model.ImagePath" id="previewImage"  alt="Book Image" style="max-width: 200px; max-height: 200px;" />
+    </div>
+   
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example3">Author</label>
+    <input type="text" id="form6Example3" class="form-control" asp-for="Author"/>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example4">Page Count</label>
+
+    <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
+  </div>
+    <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example4">Price</label>
+
+    <input  id="form6Example4" class="form-control" asp-for="Price"/>
+  </div>
+  <div class="mb-3 mt-3">
+            <input class="form-control" asp-for="PublishDate" >
+        </div>
+
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
+</form>
+<script>
+    // Resim yüklendiğinde görüntüyü güncelleme
+    document.getElementById('imageInput').addEventListener('change', function (e) {
+        var previewImage = document.getElementById('previewImage');
+        previewImage.src = URL.createObjectURL(e.target.files[0]);
+    });
+</script>

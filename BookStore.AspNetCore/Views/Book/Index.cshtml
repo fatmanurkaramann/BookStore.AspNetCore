@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Book>
+
+    <div class="container">
+        <a asp-action="GetAddPage" class="btn btn-outline-success">Create</a>
+        <div class="row" > 
+         <table class="table align-middle mb-5 mt-5 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Page Count</th>
+      <th>Price</th>
+      <th>Publish Date</th>
+      <th>Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+ 
+                    @foreach (var item in Model)
+                    {
+                               <tr>
+                            <td>@item.Name</td>
+                                <td>@item.Author</td>
+                                <td>@item.PageCount</td>
+                                    <td>@item.Price</td>
+
+                                    <td>@item.PublishDate</td>
+                                            <td>
+                        <a
+                            asp-action="GetUpdatePage"
+               type="button"
+               class="btn btn-outline-primary"
+               asp-route-id="@item.Id" asp-controller="book"
+               asp-action="updateBook"
+
+                >
+                          Edit
+                        </a>
+                               <a
+               type="button"
+               class="btn btn-outline-danger"
+                asp-route-id="@item.Id"
+                asp-action="Remove"
+                asp-controller="book"
+                >
+                              Delete
+                            </a>
+                      </td>
+        </tr>
+
+                    }
+
+  </tbody>
+</table>
+
+        </div>
+    </div>
+
+
