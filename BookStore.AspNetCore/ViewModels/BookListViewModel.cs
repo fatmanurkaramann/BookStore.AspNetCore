@@ -1,4 +1,6 @@
-﻿namespace BookStore.AspNetCore.ViewModels
+﻿using BookStore.AspNetCore.Models;
+
+namespace BookStore.AspNetCore.ViewModels
 {
     public class BookListViewModel
     {

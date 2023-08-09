@@ -1,5 +1,7 @@
-﻿using BookStore.AspNetCore.Models;
+﻿using AutoMapper;
+using BookStore.AspNetCore.Models;
 using BookStore.AspNetCore.Repositories;
+using BookStore.AspNetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.AspNetCore.Controllers
@@ -7,16 +9,19 @@ namespace BookStore.AspNetCore.Controllers
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _env;
-        public BookController(IBookRepository bookRepository, IWebHostEnvironment env)
+        public BookController(IBookRepository bookRepository, IWebHostEnvironment env, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _env = env;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult Index()
         {
-          List<Book> vm=  _bookRepository.GetAll();
+          var book=  _bookRepository.GetAll();
+            List<BookViewModel> vm = _mapper.Map<List<BookViewModel>>(book);
             return View(vm);
         }
 
@@ -25,7 +30,7 @@ namespace BookStore.AspNetCore.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddBook(Book book,IFormFile imageFile)
+        public IActionResult AddBook(BookViewModel book,IFormFile imageFile)
         {
             if (imageFile != null && imageFile.Length > 0)
             {
@@ -41,17 +46,18 @@ namespace BookStore.AspNetCore.Controllers
                 // Resmin dosya yolunu modele ekleme
                 book.ImagePath = "images/" + fileName;
             }
-            _bookRepository.Add(book);
+            _bookRepository.Add(_mapper.Map<Book>(book));
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult GetUpdatePage(int id)
         {
            var book = _bookRepository.Get(id);
-            return View(book);
+            BookViewModel vm = _mapper.Map<BookViewModel>(book);
+            return View(vm);
         }
         [HttpPost]
-        public IActionResult UpdateBook(Book book,IFormFile imageFile)
+        public IActionResult UpdateBook(BookViewModel book,IFormFile imageFile)
         {
             if (imageFile != null && imageFile.Length > 0)
             {
@@ -67,7 +73,7 @@ namespace BookStore.AspNetCore.Controllers
                 // Resmin dosya yolunu modele ekleme
                 book.ImagePath = "images/" + fileName;
             }
-            _bookRepository.Update(book);
+            _bookRepository.Update(_mapper.Map<Book>(book));
             return RedirectToAction("Index");
         }
 

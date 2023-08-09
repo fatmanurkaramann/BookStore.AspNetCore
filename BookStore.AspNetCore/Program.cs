@@ -2,6 +2,7 @@ using BookStore.AspNetCore.AppDbContext;
 using BookStore.AspNetCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddDbContext<BookStoreDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Sql"));
 });
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
