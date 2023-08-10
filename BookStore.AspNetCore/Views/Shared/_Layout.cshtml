@@ -28,8 +28,25 @@
                         <li class="nav-item"> 
                     <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
 
-                        </li>
+                   
+                  </li>
                     </ul>
+                        <div class="ml-auto mx-5">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form id="logoutForm" asp-controller="Login" asp-action="Logout" method="post" class="form-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger">Log Out</button>
+                            </form>
+                        }
+                        else
+                        {
+                                <a type="submit" class="btn btn-outline-dark" href="/Register/Index">Sign Up</a>
+
+                            <a type="submit" class="btn btn-outline-dark" href="/Login/Index">Sign In</a>
+                        }
+                </div>
                 </div>
             </div>
         </nav>

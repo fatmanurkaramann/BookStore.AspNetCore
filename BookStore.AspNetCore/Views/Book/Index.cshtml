@@ -2,7 +2,11 @@
 @{
     ViewData["Title"] = "Index";
 }
+@*razor syntax*@
 @model List<BookViewModel>
+@if(TempData["Added"] != null){
+     <div class="alert alert-success" role="alert">@TempData["Added"]</div>
+}
 
     <div class="container">
         <a asp-action="GetAddPage" class="btn btn-outline-success">Create</a>
@@ -20,42 +24,27 @@
     </tr>
   </thead>
   <tbody>
-
-
- 
-                    @foreach (var item in Model)
-                    {
-                               <tr>
-                            <td>@item.Name</td>
-                                <td>@item.Author</td>
-                                <td>@item.PageCount</td>
-                                    <td>@item.Price</td>
-
-                                    <td>@item.PublishDate</td>
-                                            <td>
-                        <a
-                            asp-action="GetUpdatePage"
-               type="button"
-               class="btn btn-outline-primary"
-               asp-route-id="@item.Id" asp-controller="book"
-               asp-action="updateBook"
-
-                >
-                          Edit
-                        </a>
-                               <a
-               type="button"
-               class="btn btn-outline-danger"
-                asp-route-id="@item.Id"
-                asp-action="Remove"
-                asp-controller="book"
-                >
+            @foreach (var item in Model)
+                {
+                  <tr>
+                     <td>@item.Name</td>
+                     <td>@item.Author</td>
+                     <td>@item.PageCount</td>
+                     <td>@item.Price</td>
+                     <td>@item.PublishDate</td>
+                     <td>
+                            <a asp-action="GetUpdatePage" type="button" class="btn btn-outline-primary"
+                          asp-route-id="@item.Id" asp-controller="book"  asp-action="updateBook">
+                              Edit
+                            </a>
+                            <a asp-action="Remove" type="button" class="btn btn-outline-danger"
+                               asp-route-id="@item.Id" asp-controller="book" >
                               Delete
                             </a>
-                      </td>
-        </tr>
+                    </td>
+                 </tr>
 
-                    }
+                }
 
   </tbody>
 </table>

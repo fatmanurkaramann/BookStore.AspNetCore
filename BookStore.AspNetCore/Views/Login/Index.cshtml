@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model LoginVM
+
+  <style>
+            @@media (max-width: 502px){
+                .col {
+                    max-width: 350px; /* Özelleştirilmiş genişlik */
+                    margin: 0 auto; /* Ortala */
+                }
+            }
+
+              @@media (max-width: 385px){
+                .col {
+                    max-width: 250px; /* Özelleştirilmiş genişlik */
+                    margin: 0 auto; /* Ortala */
+                }
+            }
+               @@media (max-width: 268px){
+                .col {
+                    max-width: 150px; /* Özelleştirilmiş genişlik */
+                    margin: 0 auto; /* Ortala */
+                }
+            }
+        </style>
+
+ <div class="d-flex justify-content-center mt-5">
+
+<form asp-controller="Login"  asp-action="Index" method="post">
+    <div   style="border:1px solid #D0BFFF;padding:20px;border-radius:10px; " >
+               <div class="form-outline mb-4" >
+    <div class="col mx-auto" style="width:500px">
+       <div class="form-outline">
+        <label class="form-label" for="form6Example1" asp-for="Username">Username</label>
+        <input type="text"  class="form-control" asp-for="@Model.Username" />
+      </div>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+      <div class="col mx-auto">
+       <label class="form-label" for="form6Example4">Password</label>
+    <input type="password" id="form6Example4" class="form-control" asp-for="@Model.Password"/>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-dark btn-block mb-4" >Sign In</button>
+
+    </div>
+
+
+  
+  <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+</form>
+
+ </div>

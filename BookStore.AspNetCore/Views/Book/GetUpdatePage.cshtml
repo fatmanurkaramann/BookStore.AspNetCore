@@ -9,10 +9,9 @@
     <div class="col">
       <div class="form-outline">
     <input type="hidden" asp-for="Id"/>
-
         <label class="form-label" for="form6Example1">Book Name</label>
-
         <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
       </div>
     </div>
   </div>
@@ -20,7 +19,8 @@
         <input type="hidden" asp-for="ImagePath"/>
         <input type="file" name="imageFile" accept="image/*" id="imageInput">
           <img src="/@Model.ImagePath" id="previewImage"  alt="Book Image" style="max-width: 200px; max-height: 200px;" />
-    </div>
+   <span asp-validation-for="ImagePath"></span>
+      </div>
    
   <div class="form-outline mb-4">
     <label class="form-label" for="form6Example3">Author</label>
