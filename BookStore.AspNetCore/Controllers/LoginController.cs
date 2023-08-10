@@ -23,6 +23,8 @@ namespace BookStore.AspNetCore.Controllers
         {
             if (ModelState.IsValid)
             {
+                //_signInManager.PasswordSignInAsync Metodu: Bu metot, kullanıcının girdiği email
+                //ve şifreyi alır ve veritabanında bu email adresine sahip bir kullanıcının varlığını kontrol eder.
                 var result = await _signInManager.PasswordSignInAsync(user.Username, user.Password, false, true);
                 if (result.Succeeded)
                 {
@@ -30,13 +32,13 @@ namespace BookStore.AspNetCore.Controllers
                 }
                 else
                 {
+                    TempData["error"] = "Yanlış kullanıcı adı veya şifre!";
                     return View();
                 }
             }
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

@@ -9,6 +9,7 @@ namespace BookStore.AspNetCore.Mapping
         public MappingProfile()
         {
             CreateMap<Book,BookViewModel>().ReverseMap();
+            CreateMap<AppUser, UserSignUpVM>().ReverseMap();
         }
     }
 }

@@ -17,7 +17,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(x =>
 {
     x.Password.RequireUppercase = false;
     x.Password.RequireNonAlphanumeric = false;
-}).AddEntityFrameworkStores<BookStoreDbContext>();
+}).AddEntityFrameworkStores<BookStoreDbContext>(); //, kullanýcý kimlik doðrulama iþlemleri
+                                                   //için veritabaný baðlantýsýný ve yapýlandýrmasýný belirtir. 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
