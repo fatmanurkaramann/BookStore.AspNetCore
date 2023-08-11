@@ -41,7 +41,9 @@ namespace BookStore.AspNetCore.Controllers
         public IActionResult AddBook(BookViewModel book,IFormFile imageFile)
         {
             //Model state: Mvcde bir typeın required,..vs kontrol edip geriye sonuç döndüren property
-
+            ModelState.Remove("ImagePath");
+            if (ModelState.IsValid)
+            {
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     // Resim dosyasını kaydetme
@@ -73,7 +75,13 @@ namespace BookStore.AspNetCore.Controllers
                 _bookRepository.Add(_mapper.Map<Book>(book));
                 TempData["Added"] = "Ürün Başarıyla eklendi";
                 return RedirectToAction("Index");
-        }
+            }
+            else
+            {
+                return View("GetAddPage");
+            }
+
+    }
         [HttpGet]
         [Authorize]
         public IActionResult GetUpdatePage(int id)

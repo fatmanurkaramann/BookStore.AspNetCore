@@ -36,9 +36,10 @@
     <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
   </div>
     <div class="form-outline mb-4">
-    <label class="form-label" for="form6Example4">Price</label>
-    <input  id="form6Example4" class="form-control" asp-for="Price"/>
-      <span asp-validation-for="Price"></span>
+ <label class="form-label" for="form6Example4">Price</label>
+<input asp-for="Price" class="form-control" type="text" id="decimalInput" name="Price" data-val="true" data-val-number="Geçerli bir sayı giriniz." data-val-decimal="Geçerli bir ondalık sayı giriniz." />
+<span asp-validation-for="Price" class="text-danger"></span>
+
   </div>
   <div class="mb-3 mt-3">
             <input class="form-control" asp-for="PublishDate" >
@@ -53,8 +54,4 @@
         previewImage.src = URL.createObjectURL(e.target.files[0]);
     });
 </script>
-@section Scripts
-{
-      <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
+
