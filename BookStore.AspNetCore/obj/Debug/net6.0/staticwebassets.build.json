@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1pgyn3VviopHXacCZ1riEVa4zglBzijP+9IMrjnJq2s=",
+  "Hash": "pknaaGKXj/aJmEF98KTVx834U3M/4ckTCOv4/LYiUJQ=",
   "Source": "BookStore.AspNetCore",
   "BasePath": "_content/BookStore.AspNetCore",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\Ekran görüntüsü 2023-06-16 114504.png",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/Ekran görüntüsü 2023-06-16 114504.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Ekran görüntüsü 2023-06-16 114504.png"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\Ekran görüntüsü 2023-08-09 160830.png",
@@ -185,23 +202,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\WhatsApp Image 2022-07-15 at 14.25.08.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\wi_800.jfif",
-      "SourceId": "BookStore.AspNetCore",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
-      "BasePath": "_content/BookStore.AspNetCore",
-      "RelativePath": "images/wi_800.jfif",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\wi_800.jfif"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\js\\site.js",

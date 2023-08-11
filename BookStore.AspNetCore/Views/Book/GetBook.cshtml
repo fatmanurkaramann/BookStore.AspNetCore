@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "GetBook";
+}
+
+@model Book
+<div class="container">
+
+<div class="row">
+    <div class="col mb-4" style="padding:30px">
+         <div class="row">
+             <div class="d-flex justify-content-center mb-5" style=" height: 500px;background-color:#FAF3F0;border-radius:10px">
+                   <img  src="/@Model.ImagePath" style="max-width: 500px; max-height: 500px;">
+                           <div class="d-flex flex-column">
+                               <div class="p-2">
+                            <h2 class="mt-4 mx-4">@Model.Name</h2>
+                               </div>
+                           <div class="p-2">
+                           <h4 class=" mx-4">@Model.Author</h4>
+                           </div>
+                           <div  style="padding-left:40px;padding-top:10px">
+                           <span>@Model.Description</span>
+                           <p style="padding-top:20px;font-weight:bold;color:green">@Model.Price TL</p>
+                           </div>
+                           </div>
+                 </div>
+                     
+        </div>
+      <div class="col">
+
+      </div>
+
+    </div>
+
+</div>
+
+</div>

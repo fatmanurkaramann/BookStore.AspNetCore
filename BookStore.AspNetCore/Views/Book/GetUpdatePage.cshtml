@@ -13,12 +13,16 @@
         <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
         <span asp-validation-for="Name"></span>
       </div>
+        <div class="form-outline mb-4">
+    <label class="form-label" asp-for="Description">Description</label>
+    <textarea type="text"  class="form-control" asp-for="Description"></textarea>
+  </div>
     </div>
   </div>
-    <div>
+     <div>
         <input type="hidden" asp-for="ImagePath"/>
         <input type="file" name="imageFile" accept="image/*" id="imageInput">
-          <img src="/@Model.ImagePath" id="previewImage"  alt="Book Image" style="max-width: 200px; max-height: 200px;" />
+        <img src="/@Model.ImagePath" id="previewImage" alt="Book Image" style="max-width: 200px; max-height: 200px;" />
    <span asp-validation-for="ImagePath"></span>
       </div>
    
@@ -29,18 +33,16 @@
 
   <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Page Count</label>
-
     <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
   </div>
     <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Price</label>
-
     <input  id="form6Example4" class="form-control" asp-for="Price"/>
+      <span asp-validation-for="Price"></span>
   </div>
   <div class="mb-3 mt-3">
             <input class="form-control" asp-for="PublishDate" >
         </div>
-
 
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
 </form>
@@ -53,5 +55,6 @@
 </script>
 @section Scripts
 {
-    <partial name="_ValidationScriptsPartial"></partial>
+      <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }

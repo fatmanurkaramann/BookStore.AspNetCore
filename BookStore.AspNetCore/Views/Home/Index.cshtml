@@ -13,7 +13,9 @@
 
       <div class="card-body text-dark ">
                <div class="d-flex justify-content-center" style=" height: 300px;">
-            <img src="@item.ImagePath" style="max-width: 300px; max-height: 300px;">
+                         <a asp-controller="Book" asp-action="GetBook" asp-route-id="@item.Id"><img  src="@item.ImagePath" style="max-width: 300px; max-height: 300px;">
+
+                </a>
         </div>
              <div class="text-center mt-3"> <!-- İçeriklerin ortalayacağı div -->
             <h5 class="card-title">@item.Name - @item.Author</h5>

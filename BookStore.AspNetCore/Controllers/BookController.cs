@@ -26,6 +26,12 @@ namespace BookStore.AspNetCore.Controllers
             List<BookViewModel> vm = _mapper.Map<List<BookViewModel>>(book);
             return View(vm);
         }
+        [HttpGet]
+        public IActionResult GetBook(int id)
+        {
+           var book = _bookRepository.Get(id);
+            return View(book);
+        }
         [Authorize]
         public IActionResult GetAddPage()
         {
@@ -35,42 +41,7 @@ namespace BookStore.AspNetCore.Controllers
         public IActionResult AddBook(BookViewModel book,IFormFile imageFile)
         {
             //Model state: Mvcde bir typeın required,..vs kontrol edip geriye sonuç döndüren property
-            if (ModelState.IsValid)
-            {
-                if (imageFile != null && imageFile.Length > 0)
-                {
-                    // Resim dosyasını kaydetme
-                    string fileName = Path.GetFileName(imageFile.FileName);
-                    string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
-                    Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
-                    using (var stream = new FileStream(imagePath, FileMode.Create))
-                    {
-                        imageFile.CopyTo(stream);
-                    }
 
-                    // Resmin dosya yolunu modele ekleme
-                    book.ImagePath = "images/" + fileName;
-                }
-                _bookRepository.Add(_mapper.Map<Book>(book));
-                TempData["Added"] = "Ürün Başarıyla eklendi";
-                return RedirectToAction("Index");
-            }
-            return View("GetAddPage");
-        }
-        [HttpGet]
-        [Authorize]
-        public IActionResult GetUpdatePage(int id)
-        {
-           var book = _bookRepository.Get(id);
-
-            BookViewModel vm = _mapper.Map<BookViewModel>(book);
-            return View(vm);
-        }
-        [HttpPost]
-        public IActionResult UpdateBook(BookViewModel book,IFormFile imageFile)
-        {
-            if (ModelState.IsValid)
-            {
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     // Resim dosyasını kaydetme
@@ -99,16 +70,57 @@ namespace BookStore.AspNetCore.Controllers
                     // Resmin dosya yolunu modele ekleme
                     book.ImagePath = "images/" + fileName;
                 }
+                _bookRepository.Add(_mapper.Map<Book>(book));
+                TempData["Added"] = "Ürün Başarıyla eklendi";
+                return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [Authorize]
+        public IActionResult GetUpdatePage(int id)
+        {
+           var book = _bookRepository.Get(id);
+
+            BookViewModel vm = _mapper.Map<BookViewModel>(book);
+            return View(vm);
+        }
+        [HttpPost]
+        public IActionResult UpdateBook(BookViewModel book,IFormFile imageFile)
+        {
+            ModelState.Remove("imageFile");
+            if (ModelState.IsValid)
+            {
+               
+                if (imageFile != null && imageFile.Length > 0 )
+                {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        imageFile.CopyTo(stream);
+                    }
+                    book.ImagePath = "images/" + fileName;
+                }
+                else
+                {
+                    // Eğer imageFile null ise, mevcut ImagePath değerini koruyoruz.
+                    var existingBook = _bookRepository.Get(book.Id);
+                    if (existingBook != null)
+                    {
+                        book.ImagePath = existingBook.ImagePath;
+                    }
+                }
+
                 _bookRepository.Update(_mapper.Map<Book>(book));
                 return RedirectToAction("Index");
             }
             else
             {
-
                 return View("GetUpdatePage");
-
             }
         }
+
 
         public IActionResult Remove(int id)
         {

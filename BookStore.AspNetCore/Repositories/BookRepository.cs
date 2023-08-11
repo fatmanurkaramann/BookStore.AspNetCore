@@ -22,7 +22,7 @@ namespace BookStore.AspNetCore.Repositories
 
         public Book Get(int id)
         {
-            var book = Table.Find(id);
+            var book = Table.AsNoTracking().FirstOrDefault(c=>c.Id==id);
             return book;
         }
 

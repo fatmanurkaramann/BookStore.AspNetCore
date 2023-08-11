@@ -23,6 +23,7 @@ namespace BookStore.AspNetCore.Controllers
         {
             var vm = _appDb.Books.Select(x => new BookListViewModel()
             {
+                Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
                 Author=x.Author,
