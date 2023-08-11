@@ -18,6 +18,7 @@ namespace BookStore.AspNetCore.Controllers
             _env = env;
             _mapper = mapper;
         }
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -25,12 +26,11 @@ namespace BookStore.AspNetCore.Controllers
             List<BookViewModel> vm = _mapper.Map<List<BookViewModel>>(book);
             return View(vm);
         }
-
+        [Authorize]
         public IActionResult GetAddPage()
         {
             return View();
         }
-        [Authorize]
         [HttpPost]
         public IActionResult AddBook(BookViewModel book,IFormFile imageFile)
         {
@@ -58,6 +58,7 @@ namespace BookStore.AspNetCore.Controllers
             return View("GetAddPage");
         }
         [HttpGet]
+        [Authorize]
         public IActionResult GetUpdatePage(int id)
         {
            var book = _bookRepository.Get(id);
