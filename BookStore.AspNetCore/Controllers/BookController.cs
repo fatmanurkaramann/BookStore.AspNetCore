@@ -113,7 +113,7 @@ namespace BookStore.AspNetCore.Controllers
                 else
                 {
                     // Eğer imageFile null ise, mevcut ImagePath değerini koruyoruz.
-                    var existingBook = _bookRepository.Get(book.Id);
+                    var existingBook = _bookRepository.Get(book.Id,false);
                     if (existingBook != null)
                     {
                         book.ImagePath = existingBook.ImagePath;

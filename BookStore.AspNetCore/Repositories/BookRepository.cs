@@ -20,10 +20,14 @@ namespace BookStore.AspNetCore.Repositories
             _dbContext.SaveChanges();
         }
 
-        public Book Get(int id)
+        public Book Get(int id,bool tracking=true)
         {
-            var book = Table.AsNoTracking().FirstOrDefault(c=>c.Id==id);
-            return book;
+            var query = Table.AsQueryable();
+            if (!tracking)
+            {
+                query = Table.AsNoTracking();
+            }
+            return query.FirstOrDefault(c => c.Id == id); ;
         }
 
         public List<Book> GetAll()

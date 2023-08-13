@@ -8,6 +8,6 @@ namespace BookStore.AspNetCore.Repositories
         void Update(Book book);
         void Remove(int id);
         List<Book> GetAll();
-        Book Get(int id);
+        Book Get(int id, bool tracking = true);
     }
 }
