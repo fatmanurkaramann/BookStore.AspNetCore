@@ -11,7 +11,7 @@ namespace BookStore.AspNetCore.Mapping
         {
             CreateMap<BookDto, BookListViewModel>().ReverseMap();
 
-
+            CreateMap<UserSignUpVM, AppUser>().ReverseMap();
             //CreateMap<Book, BookViewModel>().ReverseMap();
             CreateMap<Book, BookDto>()
                 .ReverseMap();

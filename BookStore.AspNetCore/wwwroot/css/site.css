@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+.w3-sidebar {
+    position: fixed;
+    height: 100%;
+    top: 0px;
+    left: 0;
+}
+.container{
+    margin-left:250px;
+}
+.navbar {
+    margin-left: 40px;
+}

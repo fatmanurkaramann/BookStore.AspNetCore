@@ -12,17 +12,36 @@
 
 
   <style>
-            @@media (max-width: 502px){
+            @@media (max-width: 802px){
                 .col {
-                    max-width: 350px; /* Özelleştirilmiş genişlik */
-                    margin: 0 auto; /* Ortala */
+                    max-width: 350px;
+                   /* Özelleştirilmiş genişlik */
+                    margin-left:100px;
+                    background-color:red;/* Ortala */
+                }
+            }
+              @@media (max-width: 720px){
+                .col {
+                    max-width: 300px;
+                   /* Özelleştirilmiş genişlik */
+                    background-color:red;/* Ortala */
                 }
             }
 
-              @@media (max-width: 385px){
+              @@media (max-width: 675px){
                 .col {
                     max-width: 250px; /* Özelleştirilmiş genişlik */
                     margin: 0 auto; /* Ortala */
+                }
+            }
+               @@media (max-width: 645px){
+                .col {
+                    max-width: 200px; /* Özelleştirilmiş genişlik */
+                }
+                .login-cont{
+                    padding:0;
+                    margin-right:300px;
+                    position:relative;
                 }
             }
                @@media (max-width: 268px){
@@ -36,7 +55,7 @@
  <div class="d-flex justify-content-center mt-5">
 
 <form asp-controller="Login"  asp-action="Index" method="post">
-    <div   style="border:1px solid #D0BFFF;padding:20px;border-radius:10px; " >
+    <div class="login-cont"   style="border:1px solid #D0BFFF;padding:20px;border-radius:10px; " >
                <div class="form-outline mb-4" >
     <div class="col mx-auto" style="width:500px">
        <div class="form-outline">
