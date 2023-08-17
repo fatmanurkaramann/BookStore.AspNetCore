@@ -1,8 +1,11 @@
-﻿
+﻿@using Business.DTOs
+@model BookDto
+
 @{
     ViewData["Title"] = "GetAddPage";
+    var categories = ViewBag.Categories;
 }
-@model BookViewModel
+
 <form asp-controller="Book" enctype="multipart/form-data" asp-action="AddBook" method="post">
   <div class="row mb-4">
     <div class="col">
@@ -22,18 +25,34 @@
 
  <img id="previewImage" style="max-width: 200px; max-height: 200px;"/>
   <div class="form-outline mb-4">
-    <label class="form-label">Author</label>
-    <input type="text"  class="form-control" asp-for="Author"/>
-    <span asp-validation-for="Author" class="text-danger"></span>
+    <label class="form-label">ISBN</label>
+    <input type="text"  class="form-control" asp-for="ISBN"/>
+    <span asp-validation-for="ISBN" class="text-danger"></span>
   </div>
-
+    
+   <div class="form-outline mb-4">
+    <label class="form-label">Author FirstName</label>
+    <input type="text"  class="form-control" asp-for="Author.Firstname"/>
+  </div>
+    <div class="form-outline mb-4">
+    <label class="form-label">Author LastName</label>
+    <input type="text"  class="form-control" asp-for="Author.Lastname"/>
+  </div>
   <div class="form-outline mb-4">
+       <select class="form-control" asp-for="CategoryId">
+        <option value="">Select a category</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Id">@category.CategoryName</option>
+                }
+    </select>
     <label class="form-label" for="form6Example4">Page Count</label>
 
     <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
          <span asp-validation-for="PageCount" class="text-danger"></span>
 
   </div>
+   
     <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Price</label>
     <input type="text" id="form6Example4" class="form-control" asp-for="Price"/>

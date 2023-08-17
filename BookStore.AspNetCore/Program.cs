@@ -1,25 +1,43 @@
-using BookStore.AspNetCore.AppDbContext;
-using BookStore.AspNetCore.Models;
-using BookStore.AspNetCore.Repositories;
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract.Author;
+using DataAccess.Abstract.Book;
+using DataAccess.Abstract.Category;
+using DataAccess.Concrete;
+using DataAccess.Concrete.Author;
+using DataAccess.Concrete.Book;
+using DataAccess.Concrete.Category;
+using DataAccess.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<BookStoreDbContext>(opt =>
+builder.Services.AddDbContext<BookAppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Sql"));
+    //appsettings.json dan "Sql" adlý bir baðlantý dizesini alýr.
+    //Bu, veritabaný baðlantýsýnýn bilgilerini içeren bir dizedir.
 });
 builder.Services.AddIdentity<AppUser, AppRole>(x =>
 {
     x.Password.RequireUppercase = false;
     x.Password.RequireNonAlphanumeric = false;
-}).AddEntityFrameworkStores<BookStoreDbContext>(); //, kullanýcý kimlik doðrulama iþlemleri
+}).AddEntityFrameworkStores<BookAppDbContext>(); //, kullanýcý kimlik doðrulama iþlemleri
                                                    //için veritabaný baðlantýsýný ve yapýlandýrmasýný belirtir. 
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookDal, BookDal>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorDal, AuthorDal>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+
+builder.Services.AddScoped<ICategoryDal, CategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
@@ -34,14 +52,17 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Register}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

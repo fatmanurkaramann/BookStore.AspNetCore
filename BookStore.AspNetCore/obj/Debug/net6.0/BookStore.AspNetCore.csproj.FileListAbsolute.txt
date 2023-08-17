@@ -249,3 +249,10 @@ C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\Book
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Core.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\DataAccess.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\DataAccess.pdb
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Core.pdb
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Business.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Business.pdb

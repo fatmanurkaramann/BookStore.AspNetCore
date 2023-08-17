@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using BookStore.AspNetCore.Models;
 using BookStore.AspNetCore.ViewModels;
+using Business.DTOs;
+using DataAccess.Entities;
 
 namespace BookStore.AspNetCore.Mapping
 {
@@ -8,8 +9,28 @@ namespace BookStore.AspNetCore.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Book,BookViewModel>().ReverseMap();
-            CreateMap<AppUser, UserSignUpVM>().ReverseMap();
+            CreateMap<BookDto, BookListViewModel>().ReverseMap();
+
+
+            //CreateMap<Book, BookViewModel>().ReverseMap();
+            CreateMap<Book, BookDto>()
+                .ReverseMap();
+
+            CreateMap<BookUpdateDto, Book>()
+                .ReverseMap(); // Book nesnesi dönüşümünde aynı dönüşümü kullan
+
+
+            CreateMap<Book, BookListDto>()
+                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => new AuthorDto { Firstname = src.Author.Firstname, Lastname = src.Author.Lastname }))
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => new CategoryDto {  CategoryName = src.Category.CategoryName }))
+                .ReverseMap();
+
+            // Author türünden AuthorDto'ya dönüşümü belirtin
+            CreateMap<Author, AuthorDto>().ReverseMap();
+
+            // Category türünden CategoryDto'ya dönüşümü belirtin (varsayılan adı CategoryName ise)
+            CreateMap<Category, CategoryDto>().ReverseMap();
         }
     }
+
 }

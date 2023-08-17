@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
-using BookStore.AspNetCore.Models;
-using BookStore.AspNetCore.Repositories;
 using BookStore.AspNetCore.ViewModels;
+using Business.Abstract;
+using Business.DTOs;
+using DataAccess.Concrete.Book;
+using DataAccess.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,96 +11,91 @@ namespace BookStore.AspNetCore.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBookService _bookRepository;
+        private readonly ICategoryService _categoryService;
+
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _env;
-        public BookController(IBookRepository bookRepository, IWebHostEnvironment env, IMapper mapper)
+        public BookController(IBookService bookRepository, IWebHostEnvironment env, IMapper mapper, ICategoryService categoryService)
         {
             _bookRepository = bookRepository;
             _env = env;
             _mapper = mapper;
+            _categoryService = categoryService;
         }
-        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
-          var book=  _bookRepository.GetAll();
-            List<BookViewModel> vm = _mapper.Map<List<BookViewModel>>(book);
+            var book = _bookRepository.GetAll();
+            List<BookListDto> vm = _mapper.Map<List<BookListDto>>(book);
             return View(vm);
         }
         [HttpGet]
         public IActionResult GetBook(int id)
         {
-           var book = _bookRepository.Get(id);
+            var book = _bookRepository.GetById(id);
             return View(book);
         }
-        [Authorize]
         public IActionResult GetAddPage()
         {
+            var categories = _categoryService.GetAll();
+            ViewBag.Categories = categories;
             return View();
+
         }
         [HttpPost]
-        public IActionResult AddBook(BookViewModel book,IFormFile imageFile)
+        public async Task<IActionResult> AddBook(BookDto book, IFormFile imageFile)
         {
+
             //Model state: Mvcde bir typeın required,..vs kontrol edip geriye sonuç döndüren property
             ModelState.Remove("ImagePath");
+
+            //diğer doğrulama hatalarını etkilemeden belirli bir özelliğe ait hataları kaldırmak için kullanışlı.
             if (ModelState.IsValid)
             {
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    // Resim dosyasını kaydetme
-
-                    //Yüklenen Resim dosyasının adını alma
                     string fileName = Path.GetFileName(imageFile.FileName);
-
-
-                    //_env, ASP.NET Core uygulamalarında IWebHostEnvironment tipini temsil eden bir servistir.
-                    //_env.WebRootPath kullanarak, statik içeriğin (örneğin resimler) depolandığı dizinin
-                    //fiziksel yolunu alabilirsiniz. Bu, kullanıcıların tarayıcıda görüntüleyebileceği
-                    //ve erişebileceği statik dosyaların nerede depolandığını belirlemek için kullanılır.
-                    //Resim dosyasının kaydedileceği yolun oluşturulması
                     string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
 
-                    //Gerektiğinde klasörlerin oluşturulması
                     Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
-                    // Resim dosyasını akışa kopyalama
                     using (var stream = new FileStream(imagePath, FileMode.Create))
                     {
-                        //, resim veya dosya gibi içerikleri diskte saklamak
-                        //için CopyTo veya benzeri işlemler kullanılması önemlidir.
+                   
                         imageFile.CopyTo(stream);
                     }
 
-                    // Resmin dosya yolunu modele ekleme
                     book.ImagePath = "images/" + fileName;
                 }
-                _bookRepository.Add(_mapper.Map<Book>(book));
+
+               
+                await _bookRepository.Add(book);
                 TempData["Added"] = "Ürün Başarıyla eklendi";
                 return RedirectToAction("Index");
             }
             else
             {
+                var categories = _categoryService.GetAll();
+                ViewBag.Categories = categories;
                 return View("GetAddPage");
             }
 
-    }
+        }
         [HttpGet]
-        [Authorize]
-        public IActionResult GetUpdatePage(int id)
+        public async Task<IActionResult> GetUpdatePage(int id)
         {
-           var book = _bookRepository.Get(id);
-
-            BookViewModel vm = _mapper.Map<BookViewModel>(book);
+            var book = await _bookRepository.GetById(id);
+            BookDto vm = _mapper.Map<BookDto>(book);
             return View(vm);
         }
         [HttpPost]
-        public IActionResult UpdateBook(BookViewModel book,IFormFile imageFile)
+        public async Task<IActionResult> UpdateBook(BookViewModel book, IFormFile imageFile)
         {
             ModelState.Remove("imageFile");
             if (ModelState.IsValid)
             {
-               
-                if (imageFile != null && imageFile.Length > 0 )
+
+                if (imageFile != null && imageFile.Length > 0)
                 {
                     string fileName = Path.GetFileName(imageFile.FileName);
                     string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
@@ -113,14 +110,14 @@ namespace BookStore.AspNetCore.Controllers
                 else
                 {
                     // Eğer imageFile null ise, mevcut ImagePath değerini koruyoruz.
-                    var existingBook = _bookRepository.Get(book.Id,false);
+                    var existingBook =await _bookRepository.GetById(book.Id);
                     if (existingBook != null)
                     {
                         book.ImagePath = existingBook.ImagePath;
                     }
                 }
-
-                _bookRepository.Update(_mapper.Map<Book>(book));
+               
+                _bookRepository.Update(_mapper.Map<BookDto>(book));
                 return RedirectToAction("Index");
             }
             else
@@ -132,7 +129,7 @@ namespace BookStore.AspNetCore.Controllers
 
         public IActionResult Remove(int id)
         {
-            _bookRepository.Remove(id);
+            _bookRepository.DeleteById(id);
             return RedirectToAction("Index");
         }
     }

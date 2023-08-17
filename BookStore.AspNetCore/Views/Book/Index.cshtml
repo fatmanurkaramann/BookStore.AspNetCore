@@ -1,9 +1,10 @@
-﻿
+﻿@using Business.DTOs
+
 @{
     ViewData["Title"] = "Index";
 }
 @*razor syntax*@
-@model List<BookViewModel>
+@model List<BookListDto>
 @if(TempData["Added"] != null){
      <div class="alert alert-success" role="alert">@TempData["Added"]</div>
 }
@@ -16,8 +17,10 @@
     <tr>
       <th>Name</th>
       <th>Author</th>
+      <th>Category</th>
       <th>Page Count</th>
       <th>Price</th>
+      <th>ISBN</th>
       <th>Publish Date</th>
       <th>Actions</th>
 
@@ -28,9 +31,12 @@
                 {
                   <tr>
                      <td>@item.Name</td>
-                     <td>@item.Author</td>
+                         <td>@item.Author.Firstname @item.Author.Lastname</td>
+                         <td>@item.Category.CategoryName</td>
                      <td>@item.PageCount</td>
                      <td>@item.Price</td>
+                         <td>@item.ISBN.ToUpper()</td>
+
                      <td>@item.PublishDate</td>
                      <td>
                             <a asp-action="GetUpdatePage" type="button" class="btn btn-outline-primary"

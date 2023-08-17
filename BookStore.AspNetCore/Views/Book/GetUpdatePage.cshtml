@@ -1,8 +1,9 @@
-﻿
+﻿@using Business.DTOs
+
 @{
     ViewData["Title"] = "GetUpdatePage";
 }
-@model BookViewModel
+@model BookDto
 <h1>GetUpdatePage</h1>
 <form asp-controller="Book" asp-action="UpdateBook" method="post" enctype="multipart/form-data">
   <div class="row mb-4">
@@ -12,6 +13,10 @@
         <label class="form-label" for="form6Example1">Book Name</label>
         <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
         <span asp-validation-for="Name"></span>
+      </div>
+           <div class="form-outline">
+        <label class="form-label" for="form6Example1">ISBN</label>
+        <input type="text" class="form-control" asp-for="ISBN" />
       </div>
         <div class="form-outline mb-4">
     <label class="form-label" asp-for="Description">Description</label>
@@ -27,8 +32,12 @@
       </div>
    
   <div class="form-outline mb-4">
-    <label class="form-label" for="form6Example3">Author</label>
-    <input type="text" id="form6Example3" class="form-control" asp-for="Author"/>
+    <label class="form-label">Author FirstName</label>
+    <input type="text"  class="form-control" asp-for="Author.Firstname"/>
+  </div>
+    <div class="form-outline mb-4">
+    <label class="form-label">Author LastName</label>
+    <input type="text"  class="form-control" asp-for="Author.Lastname"/>
   </div>
 
   <div class="form-outline mb-4">
