@@ -10,5 +10,6 @@ namespace DataAccess.Abstract.Book
 {
     public interface IBookDal:IRepository<Entities.Book> 
     {
+        Task<Entities.Book> NoTrackingGetById(int Id, bool tracking = true);
     }
 }

@@ -43,15 +43,18 @@ namespace Business.Concrete
         }
        
 
-        public Task<Book> GetById(int id)
+        public async Task<Book> GetByIdAsync(int id)
         {
-            return _bookDal.GetByIdAsync(id);
+            return await _bookDal.GetByIdAsync(id,false);
         }
-
-        public Task<int> Update(BookDto book)
+        public async Task<Book> NoTrackingGetByIdAsync(int id)
+        {
+            return await _bookDal.NoTrackingGetById(id, false);
+        }
+        public async Task<int> Update(BookUpdateDto book)
         {
             var bookEntity = _mapper.Map<Book>(book);
-            return _bookDal.Update(bookEntity);
+            return await _bookDal.Update(bookEntity);
         }
     }
 }

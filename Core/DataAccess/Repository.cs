@@ -44,8 +44,12 @@ namespace Core.DataAccess
         {
             var query = Table.AsQueryable();
             if (!tracking)
+            {
                 query = query.AsNoTracking();
+            }
+
             return await Table.FindAsync(id);
+
         }
 
         public async Task<int> Update(T entity)

@@ -22,11 +22,10 @@ namespace Business.Concrete
             _mapper = mapper;
         }
 
-        public List<AuthorDto> GetAllAuthor()
+        public List<Author> GetAllAuthor()
         {
             var author = _authorDal.GetAll().ToList();
-            List<AuthorDto> bookEntity = _mapper.Map<List<AuthorDto>>(author);
-            return bookEntity;
+            return author;
         }
 
         public async Task<Author> GetById(int id)

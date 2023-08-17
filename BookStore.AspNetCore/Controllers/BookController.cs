@@ -32,7 +32,7 @@ namespace BookStore.AspNetCore.Controllers
         [HttpGet]
         public IActionResult GetBook(int id)
         {
-            var book = _bookRepository.GetById(id);
+            var book = _bookRepository.GetByIdAsync(id);
             return View(book);
         }
         public IActionResult GetAddPage()
@@ -86,12 +86,12 @@ namespace BookStore.AspNetCore.Controllers
             var categories = _categoryService.GetAll();
             ViewBag.Categories = categories;
             var authors = _authorService.GetAllAuthor();
-            var book = await _bookRepository.GetById(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             BookUpdateDto vm = _mapper.Map<BookUpdateDto>(book);
             return View(vm);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateBook(BookViewModel book, IFormFile imageFile)
+        public async Task<IActionResult> UpdateBook(BookUpdateDto book, IFormFile imageFile)
         {
             ModelState.Remove("imageFile");
             if (ModelState.IsValid)
@@ -112,14 +112,14 @@ namespace BookStore.AspNetCore.Controllers
                 else
                 {
                     // Eğer imageFile null ise, mevcut ImagePath değerini koruyoruz.
-                    var existingBook =await _bookRepository.GetById(book.Id);
+                    var existingBook =await _bookRepository.NoTrackingGetByIdAsync(book.Id);
                     if (existingBook != null)
                     {
                         book.ImagePath = existingBook.ImagePath;
                     }
                 }
                
-                _bookRepository.Update(_mapper.Map<BookDto>(book));
+               await _bookRepository.Update(book);
                 return RedirectToAction("Index");
             }
             else

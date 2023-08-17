@@ -17,7 +17,6 @@ namespace Business.DTOs
         public string ImagePath { get; set; }
         public DateTime PublishDate { get; set; }
         public string Description { get; set; }
-        public int AuthorId { get; set; }
         public AuthorDto Author { get; set; }
         public int CategoryId { get; set; }
     }

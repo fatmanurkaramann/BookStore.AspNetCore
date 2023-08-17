@@ -17,8 +17,6 @@ namespace BookStore.AspNetCore.Mapping
                 .ReverseMap();
 
             CreateMap<BookUpdateDto, Book>()
-                   .ForPath(dest => dest.Author.Firstname, opt => opt.MapFrom(src => src.Author.Firstname))
-                .ForPath(dest => dest.Author.Lastname, opt => opt.MapFrom(src => src.Author.Lastname))
                 .ReverseMap();
 
 

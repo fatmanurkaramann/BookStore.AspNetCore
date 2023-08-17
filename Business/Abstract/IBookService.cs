@@ -11,9 +11,10 @@ namespace Business.Abstract
     public interface IBookService
     {
         List<Book> GetAll();
-        Task<Book> GetById(int id);
+        Task<Book> GetByIdAsync(int id);
+        Task<Book> NoTrackingGetByIdAsync(int id);
         Task< int> Add(BookDto book);
-        Task<int> Update(BookDto book);
+        Task<int> Update(BookUpdateDto book);
         Task<int> DeleteById(int id);
     }
 }
