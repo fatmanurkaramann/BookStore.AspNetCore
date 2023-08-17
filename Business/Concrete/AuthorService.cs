@@ -28,5 +28,10 @@ namespace Business.Concrete
             List<AuthorDto> bookEntity = _mapper.Map<List<AuthorDto>>(author);
             return bookEntity;
         }
+
+        public async Task<Author> GetById(int id)
+        {
+           return await _authorDal.GetByIdAsync(id);
+        }
     }
 }

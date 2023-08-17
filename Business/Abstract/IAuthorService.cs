@@ -11,5 +11,6 @@ namespace Business.Abstract
     public interface IAuthorService
     {
         List<AuthorDto> GetAllAuthor();
+        Task<Author> GetById(int id);
     }
 }

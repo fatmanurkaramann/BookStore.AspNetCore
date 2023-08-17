@@ -17,7 +17,9 @@ namespace BookStore.AspNetCore.Mapping
                 .ReverseMap();
 
             CreateMap<BookUpdateDto, Book>()
-                .ReverseMap(); // Book nesnesi dönüşümünde aynı dönüşümü kullan
+                   .ForPath(dest => dest.Author.Firstname, opt => opt.MapFrom(src => src.Author.Firstname))
+                .ForPath(dest => dest.Author.Lastname, opt => opt.MapFrom(src => src.Author.Lastname))
+                .ReverseMap();
 
 
             CreateMap<Book, BookListDto>()

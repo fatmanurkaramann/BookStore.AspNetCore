@@ -2,9 +2,6 @@
 using BookStore.AspNetCore.ViewModels;
 using Business.Abstract;
 using Business.DTOs;
-using DataAccess.Concrete.Book;
-using DataAccess.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.AspNetCore.Controllers
@@ -13,15 +10,17 @@ namespace BookStore.AspNetCore.Controllers
     {
         private readonly IBookService _bookRepository;
         private readonly ICategoryService _categoryService;
+        private readonly IAuthorService _authorService;
 
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _env;
-        public BookController(IBookService bookRepository, IWebHostEnvironment env, IMapper mapper, ICategoryService categoryService)
+        public BookController(IBookService bookRepository, IWebHostEnvironment env, IMapper mapper, ICategoryService categoryService, IAuthorService authorService)
         {
             _bookRepository = bookRepository;
             _env = env;
             _mapper = mapper;
             _categoryService = categoryService;
+            _authorService = authorService;
         }
         [HttpGet]
         public IActionResult Index()
@@ -84,8 +83,11 @@ namespace BookStore.AspNetCore.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUpdatePage(int id)
         {
+            var categories = _categoryService.GetAll();
+            ViewBag.Categories = categories;
+            var authors = _authorService.GetAllAuthor();
             var book = await _bookRepository.GetById(id);
-            BookDto vm = _mapper.Map<BookDto>(book);
+            BookUpdateDto vm = _mapper.Map<BookUpdateDto>(book);
             return View(vm);
         }
         [HttpPost]

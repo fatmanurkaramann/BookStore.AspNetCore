@@ -9,18 +9,16 @@ namespace Business.DTOs
 {
     public class BookUpdateDto
     {
-        public string ISBN { get; set; }
         public int Id { get; set; }
-        [Required(ErrorMessage = "İsim alanı boş olamaz")]
         public string Name { get; set; }
-        [Required]
+        public string ISBN { get; set; }
         public decimal Price { get; set; }
-        [Required]
         public int PageCount { get; set; }
-        [Required]
         public string ImagePath { get; set; }
         public DateTime PublishDate { get; set; }
-        [Required]
         public string Description { get; set; }
+        public int AuthorId { get; set; }
+        public AuthorDto Author { get; set; }
+        public int CategoryId { get; set; }
     }
 }
