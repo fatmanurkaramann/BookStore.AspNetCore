@@ -25,6 +25,9 @@ namespace BookStore.AspNetCore.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
+
+
             var book = _bookRepository.GetAll();
             List<BookListDto> vm = _mapper.Map<List<BookListDto>>(book);
             return View(vm);

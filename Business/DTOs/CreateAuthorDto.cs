@@ -14,6 +14,7 @@ namespace Business.DTOs
         public ICollection<Address> Addresses { get; set; }
         public ICollection<University> Universities { get; set; }
         public int BookId { get; set; }
+        public int AddressId { get; set; }
         public BookDto Book { get; set; }
     }
 }
