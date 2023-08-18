@@ -1,7 +1,33 @@
-﻿
+﻿@using Business.DTOs
+
 @{
     ViewData["Title"] = "Index";
 }
-
+@model CreateAuthorDto
 <h1>Index</h1>
 
+<form asp-controller="Author" asp-action="AddAuthor" method="post">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" asp-for="Firstname">Firstname</label>
+        <input type="text" class="form-control" asp-for="@Model.Firstname" />
+      </div>
+      <div class="form-outline mb-4">
+    <label asp-for="Lastname" class="form-label">Lastname</label>
+    <input type="text" class="form-control" asp-for="@Model.Lastname" />
+  </div>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" >Addresses</label>
+    <input type="text"  class="form-control" asp-for="Addresses.Country"/>
+
+  </div>
+
+   <div class="form-outline mb-4">
+    <label class="form-label">UniversityName</label>
+    <input type="text"  class="form-control" asp-for="Universities"/>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
+</form>

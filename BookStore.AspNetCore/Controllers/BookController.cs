@@ -124,7 +124,9 @@ namespace BookStore.AspNetCore.Controllers
             }
             else
             {
-                return View("GetUpdatePage");
+                var categories = _categoryService.GetAll();
+                ViewBag.Categories = categories;
+                return View("GetUpdatePage",book);
             }
         }
 

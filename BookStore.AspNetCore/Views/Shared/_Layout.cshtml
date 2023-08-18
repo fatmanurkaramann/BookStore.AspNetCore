@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
      @if (User.Identity.IsAuthenticated)
     {
         <div class="w3-sidebar w3-bar-block w3-light w3-card" style="display:none" id="mySidebar">
@@ -24,19 +25,21 @@
                 <a asp-controller="Book" asp-action="Index" class="w3-bar-item w3-button">List Books</a>
             </div>
 
-            <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button">Authors</a>
             <a href="#" class="w3-bar-item w3-button">Link 3</a>
         </div>
+            
+
+    }
         <div class="w3-teal" style="height:60px;">
-            <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
-            <div class="w3-container">
-                    <partial name="~/Views/Shared/partials/_headerPartial.cshtml"></partial>
+                <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+
+         </div>
+
+           <div class="w3-container">
+              <partial name="~/Views/Shared/partials/_headerPartial.cshtml"></partial>
 
             </div>
-        </div>
-    }
-
-
         <div class="container">
             <main role="main" class="pb-3">
             @RenderBody()

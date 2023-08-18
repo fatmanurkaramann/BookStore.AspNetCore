@@ -33,11 +33,13 @@ builder.Services.AddIdentity<AppUser, AppRole>(x =>
                                                    //için veritabaný baðlantýsýný ve yapýlandýrmasýný belirtir. 
 builder.Services.AddScoped<IBookDal, BookDal>();
 builder.Services.AddScoped<IBookService, BookService>();
+
 builder.Services.AddScoped<IAuthorDal, AuthorDal>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 builder.Services.AddScoped<ICategoryDal, CategoryDal>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 

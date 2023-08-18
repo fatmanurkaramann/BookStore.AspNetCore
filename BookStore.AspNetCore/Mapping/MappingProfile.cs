@@ -9,27 +9,41 @@ namespace BookStore.AspNetCore.Mapping
     {
         public MappingProfile()
         {
+            CreateMap<UserSignUpVM, AppUser>().ReverseMap();
+
+            //book
+
             CreateMap<BookDto, BookListViewModel>().ReverseMap();
 
-            CreateMap<UserSignUpVM, AppUser>().ReverseMap();
-            //CreateMap<Book, BookViewModel>().ReverseMap();
             CreateMap<Book, BookDto>()
+                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => new AuthorDto
+                 { Firstname = src.Author.Firstname, Lastname = src.Author.Lastname }))
                 .ReverseMap();
 
             CreateMap<BookUpdateDto, Book>()
                 .ReverseMap();
 
-
             CreateMap<Book, BookListDto>()
-                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => new AuthorDto { Firstname = src.Author.Firstname, Lastname = src.Author.Lastname }))
+                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => new AuthorDto
+                { Firstname = src.Author.Firstname, Lastname = src.Author.Lastname }))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => new CategoryDto {  CategoryName = src.Category.CategoryName }))
                 .ReverseMap();
 
-            // Author türünden AuthorDto'ya dönüşümü belirtin
+
             CreateMap<Author, AuthorDto>().ReverseMap();
 
-            // Category türünden CategoryDto'ya dönüşümü belirtin (varsayılan adı CategoryName ise)
             CreateMap<Category, CategoryDto>().ReverseMap();
+
+            CreateMap<AddressDto, Address>().ReverseMap();
+
+            CreateMap<UniversityDto, University>().ReverseMap();
+            CreateMap<University, UniversityDto>().ReverseMap();
+
+
+            CreateMap<Author, CreateAuthorDto>()
+       .ForAllMembers(options => options.Ignore());
+            CreateMap<Author, CreateAuthorDto>().ReverseMap();
+
         }
     }
 

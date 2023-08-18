@@ -14,16 +14,18 @@
 
         <label class="form-label" for="form6Example1">Book Name</label>
         <input type="text" id="form6Example1" class="form-control" asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+    <span asp-validation-for="Name" class="text-danger"></span>
+
       </div>
-           <div class="form-outline">
+      
+    </div>
+    <div class="col">
+             <div class="form-outline">
         <label class="form-label" for="form6Example1">ISBN</label>
         <input type="text" class="form-control" asp-for="ISBN" />
+    <span asp-validation-for="ISBN" class="text-danger"></span>
+
       </div>
-        <div class="form-outline mb-4">
-    <label class="form-label" asp-for="Description">Description</label>
-    <textarea type="text"  class="form-control" asp-for="Description"></textarea>
-  </div>
     </div>
   </div>
      <div>
@@ -32,15 +34,31 @@
         <img src="/@Model.ImagePath" id="previewImage" alt="Book Image" style="max-width: 200px; max-height: 200px;" />
    <span asp-validation-for="ImagePath"></span>
       </div>
-   
-  <div class="form-outline mb-4">
+         <div class="form-outline mb-4">
+    <label class="form-label" asp-for="Description">Description</label>
+    <textarea type="text"  class="form-control" asp-for="Description"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+
+  </div>
+  <div class="row">
+      <div class="col">
+           <div class="form-outline mb-4">
     <label asp-for="Author.Firstname"class="form-label">Author FirstName</label>
     <input type="text"  class="form-control" asp-for="Author.Firstname"/>
+    <span asp-validation-for="Author.Firstname" class="text-danger"></span>
   </div>
-    <div class="form-outline mb-4">
+  
+      </div>
+      <div class="col">
+           <div class="form-outline mb-4">
     <label class="form-label">Author LastName</label>
     <input type="text"  class="form-control" asp-for="Author.Lastname"/>
+       <span asp-validation-for="Author.Lastname" class="text-danger"></span>
   </div>
+  </div>
+  </div>
+ 
+   
       <select class="form-control" asp-for="CategoryId">
         <option value="">Select a category</option>
         @foreach (var category in categories)
@@ -48,9 +66,13 @@
                         <option value="@category.Id">@category.CategoryName</option>
         }
     </select>
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+
   <div class="form-outline mb-4">
     <label class="form-label" for="form6Example4">Page Count</label>
     <input type="number" id="form6Example4" class="form-control" asp-for="PageCount"/>
+<span asp-validation-for="PageCount" class="text-danger"></span>
+
   </div>
     <div class="form-outline mb-4">
  <label class="form-label" for="form6Example4">Price</label>
@@ -60,6 +82,8 @@
   </div>
   <div class="mb-3 mt-3">
             <input class="form-control" asp-for="PublishDate" >
+<span asp-validation-for="PublishDate" class="text-danger"></span>
+
         </div>
 
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
