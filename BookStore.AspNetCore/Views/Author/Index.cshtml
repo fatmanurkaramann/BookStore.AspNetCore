@@ -29,16 +29,7 @@
         </div>
     </div>
 </div>
-<div class="form-outline mb-4">
-    <label class="form-label">City</label>
-    <select class="form-control" asp-for="AddressId">
-        <option value="">Select a City</option>
-                @foreach (var province in ViewBag.Provinces)
-                {
-                <option value="@province">@province</option>
-                }
-    </select>
-</div>
+
   <div class="form-outline mb-4">
        <select class="form-control" asp-for="BookId">
         <option value="">Select a book</option>
