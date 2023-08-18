@@ -118,7 +118,6 @@ namespace BookStore.AspNetCore.Controllers
                         book.ImagePath = existingBook.ImagePath;
                     }
                 }
-               
                await _bookRepository.Update(book);
                 return RedirectToAction("Index");
             }

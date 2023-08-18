@@ -22,6 +22,7 @@ namespace Business.DTOs
         public string Description { get; set; }
         [Required]
         public AuthorDto Author { get; set; }
+        public int AuthorId { get; set; }
         [Required]
         public int CategoryId { get; set; }
 

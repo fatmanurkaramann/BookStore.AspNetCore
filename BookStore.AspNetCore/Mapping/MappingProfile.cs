@@ -40,9 +40,8 @@ namespace BookStore.AspNetCore.Mapping
             CreateMap<University, UniversityDto>().ReverseMap();
 
 
-            CreateMap<Author, CreateAuthorDto>()
-       .ForAllMembers(options => options.Ignore());
-            CreateMap<Author, CreateAuthorDto>().ReverseMap();
+            CreateMap<CreateAuthorDto, Author>().ReverseMap();
+
 
         }
     }

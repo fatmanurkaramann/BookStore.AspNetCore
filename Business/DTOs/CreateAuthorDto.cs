@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,9 @@ namespace Business.DTOs
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public AddressDto Addresses { get; set; }
-        public UniversityDto Universities { get; set; }
+        public ICollection<Address> Addresses { get; set; }
+        public ICollection<University> Universities { get; set; }
+        public int BookId { get; set; }
+        public BookDto Book { get; set; }
     }
 }

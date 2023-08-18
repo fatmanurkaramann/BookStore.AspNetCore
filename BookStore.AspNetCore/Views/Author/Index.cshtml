@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    var books = ViewBag.Books;
 }
 @model CreateAuthorDto
 <h1>Index</h1>
@@ -18,15 +19,32 @@
     <input type="text" class="form-control" asp-for="@Model.Lastname" />
   </div>
   </div>
-  <div class="form-outline mb-4">
-    <label class="form-label" >Addresses</label>
-    <input type="text"  class="form-control" asp-for="Addresses.Country"/>
+<div class="form-outline mb-4">
+    <label class="form-label">Addresses</label>
+    <div id="addressFields">
+        <div>
+            <input type="text" class="form-control" name="Addresses[0].Street" placeholder="Street" />
+            <input type="text" class="form-control" name="Addresses[0].City" placeholder="City" />
+            <input type="text" class="form-control" name="Addresses[0].Country" placeholder="Country" />
+        </div>
+    </div>
+</div>
 
+  <div class="form-outline mb-4">
+       <select class="form-control" asp-for="BookId">
+        <option value="">Select a book</option>
+                @foreach (var book in books)
+                {
+                        <option value="@book.Id">@book.Name</option>
+                }
+    </select>
   </div>
 
    <div class="form-outline mb-4">
     <label class="form-label">UniversityName</label>
-    <input type="text"  class="form-control" asp-for="Universities"/>
+    <div>
+        <input class="form-control" name="Universities[0].UniversityName"/>
+</div>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
