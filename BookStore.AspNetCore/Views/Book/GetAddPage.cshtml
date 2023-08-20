@@ -55,17 +55,28 @@
 
   </div>
 
-  <div class="form-outline mb-4">
+  <div class="row">
+      <div class="col-md-6">
+            <div class="form-outline mb-4">
        <select class="form-control" asp-for="CategoryId">
         <option value="">Select a category</option>
-                @foreach (var category in categories)
-                {
-                    <option value="@category.Id">@category.CategoryName</option>
-                }
+                    @foreach (var category in categories)
+                    {
+                        <option value="@category.Id">@category.CategoryName</option>
+                    }
     </select>
      <span asp-validation-for="CategoryId" class="text-danger"></span>
   </div>
-   <div class="row">
+  </div>
+  <div class="col-md-6">
+        <div class="mb-4 ">
+            <input class="form-control" asp-for="PublishDate">
+   </div>
+  </div>
+
+</div>
+
+   <div class="row mb-4">
        <div class="col">
             <label class="form-label" for="form6Example4">Page Count</label>
 
@@ -81,9 +92,7 @@
    </div>
 
   </div>
-  <div class="mb-3 mt-3">
-            <input class="form-control" asp-for="PublishDate">
-   </div>
+
 
 
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
