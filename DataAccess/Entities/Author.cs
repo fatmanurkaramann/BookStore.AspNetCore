@@ -14,5 +14,10 @@ namespace DataAccess.Entities
         public ICollection<Address> Addresses { get; set; }
         public ICollection<University> Universities { get; set; }
         public ICollection<Book> Books { get; set; }
+
+        public static implicit operator Author(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

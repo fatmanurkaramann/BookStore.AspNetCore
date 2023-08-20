@@ -22,9 +22,11 @@ namespace Business.Concrete
             _mapper = mapper;
         }
 
-        public async Task<int> Add(CreateAuthorDto authorDto)
+        public async Task<Author> Add(CreateAuthorDto authorDto)
         {
-            return await _authorDal.AddAsync(_mapper.Map<Author>(authorDto));
+            var author = _mapper.Map<Author>(authorDto);
+            await _authorDal.AddAsync(author);
+            return author;
         }
 
         public List<Author> GetAllAuthor()

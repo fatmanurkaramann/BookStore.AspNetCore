@@ -2,6 +2,7 @@
 using BookStore.AspNetCore.ViewModels;
 using Business.Abstract;
 using Business.DTOs;
+using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.AspNetCore.Controllers
@@ -99,7 +100,6 @@ namespace BookStore.AspNetCore.Controllers
             ModelState.Remove("imageFile");
             if (ModelState.IsValid)
             {
-
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     string fileName = Path.GetFileName(imageFile.FileName);

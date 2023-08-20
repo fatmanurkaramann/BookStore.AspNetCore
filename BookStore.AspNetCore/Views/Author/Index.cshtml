@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Index";
     var books = ViewBag.Books;
+
+
 }
 @model CreateAuthorDto
 <h1>Index</h1>
@@ -12,6 +14,7 @@
     <div class="col">
       <div class="form-outline">
         <label class="form-label" asp-for="Firstname">Firstname</label>
+         <input type="hidden" asp-for="Id"/>
         <input type="text" class="form-control" asp-for="@Model.Firstname" />
       </div>
       <div class="form-outline mb-4">
@@ -41,11 +44,33 @@
   </div>
 
    <div class="form-outline mb-4">
-    <label class="form-label">UniversityName</label>
+    <label class="form-label">University Name</label>
+    <button class="btn btn-outline-primary mb-3"  type="button" id="showUniversityForm">+</button>
     <div>
         <input class="form-control" name="Universities[0].UniversityName"/>
 </div>
   </div>
 
+
+<div id="universityForm" style="display:none;">
+    <div class="form-outline mb-4">
+        <label class="form-label">2.University Name</label>
+        <div>
+            <input class="form-control" name="Universities[1]?.UniversityName"/>
+        </div>
+    </div>
+</div>
   <button type="submit" class="btn btn-primary btn-block mb-4">Kaydet</button>
 </form>
+
+     <script>
+            document.getElementById("showUniversityForm").addEventListener("click", function() {
+    var universityForm = document.getElementById("universityForm");
+    if (universityForm.style.display === "none") {
+        universityForm.style.display = "block";
+    } else {
+        universityForm.style.display = "none";
+    }
+});
+
+    </script>

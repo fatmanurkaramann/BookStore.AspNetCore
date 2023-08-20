@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Concrete;
 using Business.DTOs;
 using DataAccess.Entities;
@@ -11,11 +12,13 @@ namespace BookStore.AspNetCore.Controllers
         private readonly IAuthorService _authorService;
         private readonly ICategoryService _categoryService;
         private readonly IBookService _bookService;
-        public AuthorController(IAuthorService authorService, ICategoryService categoryService, IBookService bookService)
+        private readonly IMapper _mapper;
+        public AuthorController(IAuthorService authorService, ICategoryService categoryService, IBookService bookService, IMapper mapper)
         {
             _authorService = authorService;
             _categoryService = categoryService;
             _bookService = bookService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -25,11 +28,28 @@ namespace BookStore.AspNetCore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddAuthor(CreateAuthorDto authorDto)
+        public async Task<IActionResult> AddAuthor(CreateAuthorDto authorDto,int bookId)
         {
+           var addedAuthor =await _authorService.Add(authorDto);
+            int newAuthorId = addedAuthor.Id;
 
-            await _authorService.Add(authorDto);
-            return RedirectToAction("Index");
+            if (newAuthorId > 0)
+            {
+                var newAuthor = await _authorService.GetById(newAuthorId);
+
+                if (newAuthor != null)
+                {
+                    var book = await _bookService.NoTrackingGetByIdAsync(bookId);
+
+                    if (book != null)
+                    {
+                        book.Author = newAuthor;
+                        await _bookService.Update(_mapper.Map<BookUpdateDto>(book));
+                    }
+                }
+            }
+
+            return RedirectToAction("Index","Book");
         }
     }
 }

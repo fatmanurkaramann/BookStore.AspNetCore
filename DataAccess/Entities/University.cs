@@ -9,7 +9,6 @@ namespace DataAccess.Entities
 {
     public class University:IEntity
     {
-        public int UniversityId { get; set; }
         public string UniversityName { get; set; }
         public ICollection<Author> Authors { get; set; }
 

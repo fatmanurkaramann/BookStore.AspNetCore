@@ -12,6 +12,6 @@ namespace Business.Abstract
     {
         List<Author> GetAllAuthor();
         Task<Author> GetById(int id);
-        Task<int> Add(CreateAuthorDto authorDto);
+        Task<Author> Add(CreateAuthorDto authorDto);
     }
 }
