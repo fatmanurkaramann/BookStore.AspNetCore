@@ -1,26 +1,36 @@
-﻿
+﻿@using Business.DTOs
+
 @{
     ViewData["Title"] = "GetBook";
+    var categories = ViewBag.Categories;
 }
 
-@model Book
+@model BookListDto
 <div class="container">
 
 <div class="row">
-    <div class="col mb-4" style="padding:30px">
+    <div class="col mb-4" style="padding:30px;margin-left:-300px;">
          <div class="row">
-             <div class="d-flex justify-content-center mb-5" style=" height: 500px;background-color:#FAF3F0;border-radius:10px">
+             <div class="d-flex justify-content-center mb-5" style=" height:100%;background-color:#FAF3F0;border-radius:10px">
                    <img  src="/@Model.ImagePath" style="max-width: 500px; max-height: 500px;">
                            <div class="d-flex flex-column">
                                <div class="p-2">
                             <h2 class="mt-4 mx-4">@Model.Name</h2>
                                </div>
                            <div class="p-2">
-                           <h4 class=" mx-4">@Model.Author</h4>
+                           <h4 class=" mx-4" >@Model.Author.Firstname @Model.Author.Lastname</h4>
                            </div>
                            <div  style="padding-left:40px;padding-top:10px">
                            <span>@Model.Description</span>
                            <p style="padding-top:20px;font-weight:bold;color:green">@Model.Price TL</p>
+
+                             <div>
+                               <p>Öne çıkan bilgiler</p>
+                               <p>Kategori: @Model.Category?.CategoryName</p>
+                               <p>ISBN Numarası: @Model.ISBN</p>
+                               <p>Sayfa Sayısı: @Model.PageCount</p>
+                               <p>Yayım Tarihi: @Model.PublishDate.Year</p>
+                           </div>
                            </div>
                            </div>
                  </div>
