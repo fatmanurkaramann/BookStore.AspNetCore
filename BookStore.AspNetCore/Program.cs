@@ -67,4 +67,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.MapControllerRoute(
+    name: "error",
+    pattern: "/{*article}",
+    defaults:new {controller="Home",action="Error"}
+
+    );
+
 app.Run();

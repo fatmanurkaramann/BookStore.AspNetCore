@@ -34,6 +34,7 @@ namespace BookStore.AspNetCore.Controllers
             return View(vm);
         }
         [HttpGet]
+        [Route("[controller]/{id}")]
         public async Task<IActionResult> GetBook(int id)
         {
             var book = await _bookRepository.GetByIdAsync(id);
@@ -42,6 +43,8 @@ namespace BookStore.AspNetCore.Controllers
             BookListDto vm = _mapper.Map<BookListDto>(book);
             return View(vm);
         }
+
+        [Route("/add-book",Name ="addProduct")]
         public IActionResult GetAddPage()
         {
             var categories = _categoryService.GetAll();
@@ -50,6 +53,7 @@ namespace BookStore.AspNetCore.Controllers
 
         }
         [HttpPost]
+        [Route("/add-book", Name = "addProduct")]
         public async Task<IActionResult> AddBook(BookDto book, IFormFile imageFile)
         {
 
@@ -88,6 +92,7 @@ namespace BookStore.AspNetCore.Controllers
 
         }
         [HttpGet]
+        [Route("/edit-book/{id}")]
         public async Task<IActionResult> GetUpdatePage(int id)
         {
             var categories = _categoryService.GetAll();

@@ -12,13 +12,13 @@ namespace BookStore.AspNetCore.Controllers
         {
             _signInManager = signInManager;
         }
-
+        [Route("/sign-in")]
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(LoginVM user)
+        public async Task<IActionResult> Login(LoginVM user)
         {
 
             if (ModelState.IsValid)

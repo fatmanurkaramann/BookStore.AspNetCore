@@ -21,6 +21,7 @@ namespace BookStore.AspNetCore.Controllers
             _mapper = mapper;
         }
 
+        [Route("[controller]")]
         public IActionResult Index()
         {
             var books = _bookService.GetAll();

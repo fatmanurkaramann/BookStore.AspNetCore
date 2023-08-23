@@ -19,13 +19,13 @@ namespace BookStore.AspNetCore.Controllers
             _userManager = userManager;
             _mapper = mapper;
         }
-
+        [Route("/sign-up")]
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(UserSignUpVM vm)
+        public async Task<IActionResult> Register(UserSignUpVM vm)
         {
             if (ModelState.IsValid)
             {
