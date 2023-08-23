@@ -256,3 +256,7 @@ C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\Book
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Core.pdb
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Business.dll
 C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\Business.pdb
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\JetBrains.Annotations.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\X.PagedList.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\obj\Debug\net6.0\BookStore.AspNetCore.MvcApplicationPartsAssemblyInfo.cs

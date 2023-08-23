@@ -1,10 +1,12 @@
 ﻿@using Business.DTOs
-
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 @{
     ViewData["Title"] = "Index";
 }
 @*razor syntax*@
-@model List<BookListDto>
+@model X.PagedList.IPagedList<Business.DTOs.BookListDto>
 @if(TempData["Added"] != null){
      <div class="alert alert-success" role="alert">@TempData["Added"]</div>
 }
@@ -58,4 +60,7 @@
         </div>
     </div>
 
-
+</br>
+<div class="text-center">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new[] { "page-item" }, PageClasses = new[] { "page-link" }, UlElementClasses = new[] { "pagination" } })
+</div>

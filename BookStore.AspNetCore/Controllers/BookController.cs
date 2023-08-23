@@ -5,6 +5,7 @@ using Business.DTOs;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace BookStore.AspNetCore.Controllers
 {
@@ -27,11 +28,17 @@ namespace BookStore.AspNetCore.Controllers
             _authorService = authorService;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int page =1)
         {
-            var book = _bookRepository.GetAll();
-            List<BookListDto> vm = _mapper.Map<List<BookListDto>>(book);
-            return View(vm);
+            var bookPagedList = _bookRepository.GetAll().ToPagedList(page, 4);
+            List<Book> books = bookPagedList.ToList();
+
+            List<BookListDto> bookListDtos = _mapper.Map<List<BookListDto>>(books);
+            IPagedList<BookListDto> pagedBookListDtos = new StaticPagedList<BookListDto>(bookListDtos, bookPagedList.GetMetaData());
+
+            return View(pagedBookListDtos);
+
+
         }
         [HttpGet]
         [Route("[controller]/{id}")]

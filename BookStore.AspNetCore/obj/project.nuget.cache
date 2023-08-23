@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4uciPMLmTInJ2Ntg8AUQO0G9oEZaYIqHryAUyuZlowbVAWPiMhcvbrTSS9Db/LMfhwJJKUBgZ5BDZK1qMH1gyQ==",
+  "dgSpecHash": "7pXAyBAjRYNz0BYjz3eW/h/ihTRq024DT81gVpeErojRAnHzZXWXyXihJeLa7ttUydE0cjXPbs+MTeDswyfh7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\fato\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\fato\\.nuget\\packages\\jetbrains.annotations\\2022.3.1\\jetbrains.annotations.2022.3.1.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
@@ -246,7 +247,9 @@
     "C:\\Users\\fato\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\fato\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\fato\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\fato\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\fato\\.nuget\\packages\\x.pagedlist\\8.4.7\\x.pagedlist.8.4.7.nupkg.sha512",
+    "C:\\Users\\fato\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.7\\x.pagedlist.mvc.core.8.4.7.nupkg.sha512"
   ],
   "logs": []
 }
