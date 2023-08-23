@@ -39,17 +39,9 @@ namespace Core.DataAccess
             }
             return query;
         }
-
         public async Task<T> GetByIdAsync(int id, bool tracking = true)
         {
-            var query = Table.AsQueryable();
-            if (!tracking)
-            {
-                query = query.AsNoTracking();
-            }
-
             return await Table.FindAsync(id);
-
         }
 
         public async Task<int> Update(T entity)

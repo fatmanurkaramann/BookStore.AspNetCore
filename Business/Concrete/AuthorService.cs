@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.DTOs;
+using Core.DataAccess;
 using DataAccess.Abstract.Author;
+using DataAccess.Concrete.Author;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace Business.Concrete
     {
         private readonly IAuthorDal _authorDal;
         private readonly IMapper _mapper;
+     
 
         public AuthorService(IAuthorDal authorDal, IMapper mapper)
         {
