@@ -11,6 +11,7 @@ namespace BookStore.AspNetCore.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IBookService _bookRepository;
         private readonly BookAppDbContext _appDb;
+
         public HomeController(ILogger<HomeController> logger, IBookService bookRepository, BookAppDbContext appDb)
         {
             _logger = logger;
