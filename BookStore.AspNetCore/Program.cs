@@ -1,3 +1,4 @@
+using BookStore.AspNetCore.Filters;
 using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract.Author;
@@ -40,6 +41,8 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<ICategoryDal, CategoryDal>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddScoped<NotFoundFilter>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
@@ -62,6 +65,10 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=book}/{action=pages}/{page}/{pagesize}");
 
 app.MapControllerRoute(
     name: "default",
