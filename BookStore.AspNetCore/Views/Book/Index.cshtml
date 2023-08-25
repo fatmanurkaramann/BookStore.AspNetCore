@@ -7,6 +7,8 @@
 }
 @*razor syntax*@
 @model X.PagedList.IPagedList<Business.DTOs.BookListDto>
+
+
 @if(TempData["Added"] != null){
      <div class="alert alert-success" role="alert">@TempData["Added"]</div>
 }
@@ -59,8 +61,66 @@
 
         </div>
     </div>
-
+@*    <label for="pageSizeSelect">Sayfa Boyutu:</label>
+<select id="pageSizeSelect" onchange="changePageSize(this.value)" >
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>*@
 </br>
+
 <div class="text-center">
     @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new[] { "page-item" }, PageClasses = new[] { "page-link" }, UlElementClasses = new[] { "pagination" } })
 </div>
+
+
+
+
+
+
+@*<script>
+    window.onload = function() {
+        var pageSize = @Model.PageSize;
+
+
+        var selectElement = document.getElementById("pageSizeSelect");
+        for (var i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === pageSize.toString()) {
+                selectElement.options[i].selected = true;
+                break;
+            }
+        }
+
+    }
+
+    function changePageSize(pageSize) {
+        var currentUrl = window.location.href;
+        var newUrl = updateQueryStringParameter(currentUrl, "pageSize", pageSize);
+        window.location.href = newUrl;
+    }
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            uri = uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            uri = uri + separator + key + "=" + value;
+        }
+
+        // Güncellenmiş URL'yi kullanarak sayfa boyutu seçeneğini güncelle
+        var selectElement = document.getElementById("pageSizeSelect");
+        for (var i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === value) {
+                selectElement.options[i].selected = true;
+                break;
+            }
+        }
+
+        return uri;
+    }
+</script>*@
+
+
+

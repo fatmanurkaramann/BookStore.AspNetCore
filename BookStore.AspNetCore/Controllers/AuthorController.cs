@@ -31,26 +31,35 @@ namespace BookStore.AspNetCore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(CreateAuthorDto authorDto,int bookId)
         {
-           var addedAuthor =await _authorService.Add(authorDto);
-            int newAuthorId = addedAuthor.Id;
-
-            if (newAuthorId > 0)
+            if (ModelState.IsValid)
             {
-                var newAuthor = await _authorService.GetById(newAuthorId);
+                var addedAuthor = await _authorService.Add(authorDto);
+                int newAuthorId = addedAuthor.Id;
 
-                if (newAuthor != null)
+                if (newAuthorId > 0)
                 {
-                    var book = await _bookService.NoTrackingGetByIdAsync(bookId);
+                    var newAuthor = await _authorService.GetById(newAuthorId);
 
-                    if (book != null)
+                    if (newAuthor != null)
                     {
-                        book.Author = newAuthor;
-                        await _bookService.Update(_mapper.Map<BookUpdateDto>(book));
+                        var book = await _bookService.NoTrackingGetByIdAsync(bookId);
+
+                        if (book != null)
+                        {
+                            book.Author = newAuthor;
+                            await _bookService.Update(_mapper.Map<BookUpdateDto>(book));
+                        }
                     }
                 }
-            }
 
-            return RedirectToAction("Index","Book");
+                return RedirectToAction("Index", "Book");
+            }
+            else
+            {
+                var books = _bookService.GetAll();
+                ViewBag.Books = books;
+                return View("Index");
+            }
         }
     }
 }

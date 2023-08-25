@@ -1,4 +1,5 @@
-﻿using BookStore.AspNetCore.ViewModels;
+﻿using BookStore.AspNetCore.Filters;
+using BookStore.AspNetCore.ViewModels;
 using Business.Abstract;
 using DataAccess.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 
 namespace BookStore.AspNetCore.Controllers
 {
+    [LogFilter]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,9 +20,11 @@ namespace BookStore.AspNetCore.Controllers
             _bookRepository = bookRepository;
             _appDb = appDb;
         }
-
+        [CustomResultFilter("fato","1")]
+        [CustomExceptionFilter]
         public IActionResult Index()
         {
+           // throw new Exception("hata meydana geldi");
             var vm = _appDb.Books.Select(x => new BookListViewModel()
             {
                 Id = x.Id,
@@ -38,9 +42,11 @@ namespace BookStore.AspNetCore.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(ErrorViewModel errorViewModel)
         {
-            return View();
+            errorViewModel.RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+            return View(errorViewModel);
         }
     }
 }

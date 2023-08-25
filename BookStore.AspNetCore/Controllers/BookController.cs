@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookStore.AspNetCore.Filters;
 using BookStore.AspNetCore.ViewModels;
 using Business.Abstract;
 using Business.DTOs;
@@ -27,21 +28,23 @@ namespace BookStore.AspNetCore.Controllers
             _categoryService = categoryService;
             _authorService = authorService;
         }
+
         [HttpGet]
-        public IActionResult Index(int page =1)
+        public IActionResult Index(int page =1, int pageSize=3)
         {
-            var bookPagedList = _bookRepository.GetAll().ToPagedList(page, 4);
+            var bookPagedList = _bookRepository.GetAll().ToPagedList(page,pageSize);
             List<Book> books = bookPagedList.ToList();
 
             List<BookListDto> bookListDtos = _mapper.Map<List<BookListDto>>(books);
             IPagedList<BookListDto> pagedBookListDtos = new StaticPagedList<BookListDto>(bookListDtos, bookPagedList.GetMetaData());
 
             return View(pagedBookListDtos);
-
-
         }
+       
         [HttpGet]
         [Route("[controller]/{id}")]
+        //parametre aldığı için böyle tanımlandı
+        [ServiceFilter(typeof(NotFoundFilter))]
         public async Task<IActionResult> GetBook(int id)
         {
             var book = await _bookRepository.GetByIdAsync(id);
@@ -54,8 +57,12 @@ namespace BookStore.AspNetCore.Controllers
         [Route("/add-book",Name ="addProduct")]
         public IActionResult GetAddPage()
         {
+            var authors = _authorService.GetAllAuthor();
             var categories = _categoryService.GetAll();
+
+            ViewBag.Authors = authors;
             ViewBag.Categories = categories;
+
             return View();
 
         }
@@ -92,6 +99,8 @@ namespace BookStore.AspNetCore.Controllers
             }
             else
             {
+                var authors = _authorService.GetAllAuthor();
+                ViewBag.Authors = authors;
                 var categories = _categoryService.GetAll();
                 ViewBag.Categories = categories;
                 return View("GetAddPage");
@@ -100,6 +109,7 @@ namespace BookStore.AspNetCore.Controllers
         }
         [HttpGet]
         [Route("/edit-book/{id}")]
+        [ServiceFilter(typeof(NotFoundFilter))]
         public async Task<IActionResult> GetUpdatePage(int id)
         {
             var categories = _categoryService.GetAll();
@@ -147,7 +157,7 @@ namespace BookStore.AspNetCore.Controllers
             }
         }
 
-
+        [ServiceFilter(typeof(NotFoundFilter))]
         public IActionResult Remove(int id)
         {
             _bookRepository.DeleteById(id);

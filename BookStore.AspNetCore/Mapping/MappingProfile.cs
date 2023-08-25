@@ -16,8 +16,6 @@ namespace BookStore.AspNetCore.Mapping
             CreateMap<BookDto, BookListViewModel>().ReverseMap();
 
             CreateMap<Book, BookDto>()
-                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => new AuthorDto
-                 { Firstname = src.Author.Firstname, Lastname = src.Author.Lastname }))
                 .ReverseMap();
 
             CreateMap<BookUpdateDto, Book>()

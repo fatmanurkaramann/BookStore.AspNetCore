@@ -16,6 +16,7 @@
         <label class="form-label" asp-for="Firstname">Firstname</label>
          <input type="hidden" asp-for="Id"/>
         <input type="text" class="form-control" asp-for="@Model.Firstname" />
+         <span asp-validation-for="Firstname" class="text-danger"></span>
       </div>
       <div class="form-outline mb-4">
     <label asp-for="Lastname" class="form-label">Lastname</label>
