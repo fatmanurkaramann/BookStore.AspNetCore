@@ -1,4 +1,5 @@
 using BookStore.AspNetCore.Filters;
+using BookStore.AspNetCore.Middlewares;
 using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract.Author;
@@ -9,16 +10,14 @@ using DataAccess.Concrete.Author;
 using DataAccess.Concrete.Book;
 using DataAccess.Concrete.Category;
 using DataAccess.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Directory.GetCurrentDirectory()));
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BookAppDbContext>(opt =>
 {
@@ -59,6 +58,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+
+app.UseMiddleware<IpAddressControlMiddleware>();
 
 app.UseRouting();
 

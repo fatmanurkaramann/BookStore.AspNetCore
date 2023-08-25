@@ -6,6 +6,7 @@ using Business.DTOs;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using X.PagedList;
 
 namespace BookStore.AspNetCore.Controllers
@@ -16,17 +17,15 @@ namespace BookStore.AspNetCore.Controllers
         private readonly IBookService _bookRepository;
         private readonly ICategoryService _categoryService;
         private readonly IAuthorService _authorService;
-
         private readonly IMapper _mapper;
-        private readonly IWebHostEnvironment _env;
-        
-        public BookController(IBookService bookRepository, IWebHostEnvironment env, IMapper mapper, ICategoryService categoryService, IAuthorService authorService)
+        private readonly IFileProvider _fileProvider;
+        public BookController(IBookService bookRepository, IMapper mapper, ICategoryService categoryService, IAuthorService authorService, IFileProvider fileProvider)
         {
             _bookRepository = bookRepository;
-            _env = env;
             _mapper = mapper;
             _categoryService = categoryService;
             _authorService = authorService;
+            _fileProvider = fileProvider;
         }
 
         [HttpGet]
@@ -59,7 +58,6 @@ namespace BookStore.AspNetCore.Controllers
         {
             var authors = _authorService.GetAllAuthor();
             var categories = _categoryService.GetAll();
-
             ViewBag.Authors = authors;
             ViewBag.Categories = categories;
 
@@ -79,17 +77,17 @@ namespace BookStore.AspNetCore.Controllers
             {
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    string fileName = Path.GetFileName(imageFile.FileName);
-                    string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
+                    var root = _fileProvider.GetDirectoryContents("wwwroot");
+                    var images = root.First(x => x.Name == "images");
 
-                    Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
-                    using (var stream = new FileStream(imagePath, FileMode.Create))
-                    {
-                   
-                        imageFile.CopyTo(stream);
-                    }
+                    var randomImageName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
 
-                    book.ImagePath = "images/" + fileName;
+                    var path = Path.Combine(images.PhysicalPath, randomImageName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                     imageFile.CopyTo(stream);
+
+                    book.ImagePath = randomImageName;
                 }
 
                
@@ -127,15 +125,17 @@ namespace BookStore.AspNetCore.Controllers
             {
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    string fileName = Path.GetFileName(imageFile.FileName);
-                    string imagePath = Path.Combine(_env.WebRootPath, "images", fileName);
+                    var root = _fileProvider.GetDirectoryContents("wwwroot");
+                    var images = root.First(x => x.Name == "images");
 
-                    Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
-                    using (var stream = new FileStream(imagePath, FileMode.Create))
-                    {
+                    var randomImageName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
+
+                    var path = Path.Combine(images.PhysicalPath, randomImageName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
                         imageFile.CopyTo(stream);
-                    }
-                    book.ImagePath = "images/" + fileName;
+
+                    book.ImagePath = randomImageName;
                 }
                 else
                 {

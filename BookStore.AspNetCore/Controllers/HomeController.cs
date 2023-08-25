@@ -20,8 +20,8 @@ namespace BookStore.AspNetCore.Controllers
             _bookRepository = bookRepository;
             _appDb = appDb;
         }
-        [CustomResultFilter("fato","1")]
-        [CustomExceptionFilter]
+       // [CustomResultFilter("fato","1")]
+        //[CustomExceptionFilter]
         public IActionResult Index()
         {
            // throw new Exception("hata meydana geldi");

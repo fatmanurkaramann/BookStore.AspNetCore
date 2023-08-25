@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wAbh8p77ECI6hKi3m/ZdMRLFkUY728rktUSzgQR51ls=",
+  "Hash": "P+C2k4oIHcJISA40kjibUCu6iQDBfqYfe9b0mKmvoN4=",
   "Source": "BookStore.AspNetCore",
   "BasePath": "_content/BookStore.AspNetCore",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\64b8c1cb-f780-47af-af65-6ab5398d861c.jfif",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/64b8c1cb-f780-47af-af65-6ab5398d861c.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\64b8c1cb-f780-47af-af65-6ab5398d861c.jfif"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\DI.png",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/DI.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\DI.png"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\Ekran görüntüsü 2023-06-16 114504.png",
@@ -219,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Ekran görüntüsü 2023-08-19 162718.png"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\standolane routing.png",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/standolane routing.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\standolane routing.png"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\WhatsApp Image 2022-07-15 at 14.25.08.jpeg",
