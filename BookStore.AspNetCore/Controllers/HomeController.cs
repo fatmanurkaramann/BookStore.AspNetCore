@@ -1,6 +1,7 @@
 ﻿using BookStore.AspNetCore.Filters;
 using BookStore.AspNetCore.ViewModels;
 using Business.Abstract;
+using Business.DTOs;
 using DataAccess.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -25,7 +26,7 @@ namespace BookStore.AspNetCore.Controllers
         public IActionResult Index()
         {
            // throw new Exception("hata meydana geldi");
-            var vm = _appDb.Books.Select(x => new BookListViewModel()
+            var vm = _appDb.Books.Select(x => new BookListDto()
             {
                 Id = x.Id,
                 Name = x.Name,
