@@ -18,17 +18,16 @@
                 <button onclick="w3_close()" class="btn btn-primary"><i class="fa-solid fa-x"></i></button>
                 <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home" 
                     aria-hidden="true"></i>Home Page</a>
-                <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()" id="booksButton"><i class="fa fa-book"></i>
-                Books <i class="fa fa-caret-down"></i>
-            </button>
-            <div id="demoAcc" class="w3-hide w3-white w3-card">
-                <a asp-controller="Book" asp-action="GetAddPage" class="w3-bar-item w3-button">Create Books</a>
-                <a asp-controller="Book" asp-action="Index" class="w3-bar-item w3-button">List Books</a>
-            </div>
-
                 <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button">
                         <i class="fa fa-users"></i>
                     Authors</a>
+                              <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()" id="booksButton"><i class="fa fa-book"></i>
+                    Books <i class="fa fa-caret-down"></i>
+                </button>
+                <div id="demoAcc" class="w3-hide w3-white w3-card">
+                    <a asp-controller="Book" asp-action="GetAddPage" class="w3-bar-item w3-button">Create Books</a>
+                    <a asp-controller="Book" asp-action="Index" class="w3-bar-item w3-button">List Books</a>
+                </div>
             <a href="#" class="w3-bar-item w3-button">Link 3</a>
 
             @if (User.Identity.IsAuthenticated)
@@ -47,7 +46,8 @@
 
 <div class="nav flex-column nav-pills" id="closeButtonsSidebar"
 role="tablist" aria-orientation="vertical">
-    <button class="w3-button w3-teal w3-xlarge" style="background-color:#4723D9 !important;" onclick="w3_open()">☰</button>
+    <a class="w3-bar-item w3-button" style="background-color:#4723D9 !important;" onclick="w3_open()">
+        <i class="fa fa-bars fa-2x" aria-hidden="true" ></i></a>
 
    <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home fa-2x" 
                     aria-hidden="true"></i> </a>
