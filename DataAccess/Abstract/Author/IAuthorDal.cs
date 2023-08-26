@@ -9,5 +9,6 @@ namespace DataAccess.Abstract.Author
 {
     public interface IAuthorDal:IRepository<Entities.Author>
     {
+        Task<Entities.Author> NoTrackingGetById(int Id, bool tracking = true, bool includeData = true);
     }
 }

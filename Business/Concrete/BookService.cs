@@ -49,7 +49,7 @@ namespace Business.Concrete
         }
         public async Task<Book> NoTrackingGetByIdAsync(int id)
         {
-            return await _bookDal.NoTrackingGetById(id, false);
+            return await _bookDal.NoTrackingGetById(id, false,true);
         }
         public async Task<int> Update(BookUpdateDto book)
         {

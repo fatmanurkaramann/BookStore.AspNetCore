@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         public async Task<Author> GetById(int id)
         {
-           return await _authorDal.GetByIdAsync(id);
+            return await _authorDal.NoTrackingGetById(id, false);
         }
     }
 }
