@@ -15,21 +15,16 @@
                     </ul>
                         <div class="ml-auto mx-5 " >
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
-                                <form id="logoutForm" asp-controller="Login" asp-action="Logout" method="post" class="form-inline">
-                            @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-danger">Log Out</button>
-                                </form>
-                    }
-                    else
-                    {
-                                    <a type="submit" class="btn btn-outline-dark"  asp-controller="Register"
+                        <a type="submit" class="btn btn-outline-dark"  asp-controller="Register"
                                     asp-action="Index"
                                     >Sign Up</a>
 
-                                    <a type="submit" class="btn btn-outline-dark" asp-action="Index" asp-controller="Login">Sign In</a>
+                        <a type="submit" class="btn btn-outline-dark" asp-action="Index" 
+                                  asp-controller="Login">Sign In</a>
                     }
+                  
                 </div>
                 </div>
             </div>

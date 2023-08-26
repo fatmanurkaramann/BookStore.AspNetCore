@@ -1,4 +1,8 @@
-﻿@using Business.DTOs
+﻿
+
+
+
+@using Business.DTOs
 @using X.PagedList
 @using X.PagedList.Mvc.Core
 @using X.PagedList.Web.Common
@@ -7,60 +11,68 @@
 }
 @*razor syntax*@
 @model X.PagedList.IPagedList<Business.DTOs.BookListDto>
-
-
-@if(TempData["Added"] != null){
-     <div class="alert alert-success" role="alert">@TempData["Added"]</div>
+@if (TempData["Added"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Added"]</div>
 }
+<a asp-route="addProduct" class="btn btn-outline-success mb-5">Create</a>
 
-    <div class="container-i">
-        <a asp-route="addProduct" class="btn btn-outline-success">Create</a>
-        <div class="row" > 
-         <table class="table align-middle mb-5 mt-5 bg-white">
-  <thead class="bg-light">
+
+    <table class="table table-bordered">
+  <thead>
     <tr>
-      <th>Name</th>
+    <th>Name</th>
       <th>Author</th>
       <th>Category</th>
       <th>Page Count</th>
       <th>Price</th>
       <th>ISBN</th>
       <th>Publish Date</th>
-      <th>Actions</th>
-
+      <th></th>
     </tr>
   </thead>
   <tbody>
-            @foreach (var item in Model)
-                {
-                  <tr>
-                     <td>@item.Name</td>
-                         <td>@item.Author.Firstname @item.Author.Lastname</td>
-                         <td>@item.Category.CategoryName</td>
-                     <td>@item.PageCount</td>
-                     <td>@item.Price</td>
-                         <td>@item.ISBN.ToUpper()</td>
+        @foreach (var item in Model)
+        {
+                      <tr>
+                         <td>@item.Name</td>
+                             <td>@item.Author.Firstname @item.Author.Lastname</td>
+                             <td>@item.Category.CategoryName</td>
+                         <td>@item.PageCount</td>
+                         <td>@item.Price</td>
+                             <td>@item.ISBN.ToUpper()</td>
 
-                     <td>@item.PublishDate</td>
-                     <td>
-                            <a asp-action="GetUpdatePage" type="button" class="btn btn-outline-primary"
+                         <td>@item.PublishDate</td>
+                        <td>
+                         <div class="dropdown">
+                     <button class="btn btn-secondary dropdown-toggle" type="button" 
+                      id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 ...
+                     </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                       <a asp-action="GetUpdatePage" type="button" class="dropdown-item"
                           asp-route-id="@item.Id" asp-controller="book"  asp-action="updateBook">
-                              Edit
-                            </a>
-                            <a asp-action="Remove" type="button" class="btn btn-outline-danger"
+                                      Edit
+                                    </a>
+                                        <a asp-action="Remove" type="button" class="dropdown-item"
                                asp-route-id="@item.Id" asp-controller="book" >
-                              Delete
-                            </a>
-                    </td>
-                 </tr>
+                                      Delete
+                                    </a>
+                     </div>
+                         </div>
+                        </td>
+                     </tr>
 
-                }
-
+        }
   </tbody>
 </table>
 
-        </div>
-    </div>
+
+
+
+<!-- Example single danger button -->
+
+
 @*    <label for="pageSizeSelect">Sayfa Boyutu:</label>
 <select id="pageSizeSelect" onchange="changePageSize(this.value)" >
     <option value="2">2</option>
@@ -72,7 +84,6 @@
 <div class="text-center">
     @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new[] { "page-item" }, PageClasses = new[] { "page-link" }, UlElementClasses = new[] { "pagination" } })
 </div>
-
 
 
 

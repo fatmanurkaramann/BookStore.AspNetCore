@@ -46,9 +46,8 @@ namespace BookStore.AspNetCore.Controllers
         [ServiceFilter(typeof(NotFoundFilter))]
         public async Task<IActionResult> GetBook(int id)
         {
-            var book = await _bookRepository.GetByIdAsync(id);
-            await _categoryService.GetById(book.CategoryId);
-            var authors = _authorService.GetAllAuthor();
+            //include
+            var book = await _bookRepository.NoTrackingGetByIdAsync(id);
             BookListDto vm = _mapper.Map<BookListDto>(book);
             return View(vm);
         }

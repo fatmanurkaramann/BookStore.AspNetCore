@@ -20,6 +20,7 @@ namespace Business.DTOs
         public DateTime PublishDate { get; set; }
         [Required]
         public string Description { get; set; }
+       // public AuthorDto Authors { get; set; }
         [Required]
         public int AuthorId { get; set; }
         [Required]

@@ -59,7 +59,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseMiddleware<IpAddressControlMiddleware>();
+//app.UseMiddleware<IpAddressControlMiddleware>();
 
 app.UseRouting();
 

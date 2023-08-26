@@ -16,15 +16,16 @@ namespace DataAccess.Concrete.Book
         {
         }
 
-        public async Task<Entities.Book> NoTrackingGetById(int Id,bool tracking=true)
+        public async Task<Entities.Book> NoTrackingGetById(int Id,bool tracking=true,bool includeData=true)
         {
             var query = Table.AsQueryable();
-            if (!tracking)
+            if (!tracking || includeData)
             {
-                query = query.AsNoTracking();
+                query = query.AsNoTracking().Include(b => b.Author).Include(a => a.Category);
             }
 
             return await query.FirstOrDefaultAsync(x => x.Id == Id);
         }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/7869b3ed74.js" crossorigin="anonymous"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookStore.AspNetCore</title>
@@ -11,13 +12,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
      @if (User.Identity.IsAuthenticated)
     {
         <div class="w3-sidebar w3-bar-block w3-light w3-card" style="display:none" id="mySidebar">
-            <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-            <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button">Home Page</a>
-            <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()">
+                <button onclick="w3_close()" class="btn btn-primary"><i class="fa-solid fa-x"></i></button>
+                <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home" 
+                    aria-hidden="true"></i>Home Page</a>
+                <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()" id="booksButton"><i class="fa fa-book"></i>
                 Books <i class="fa fa-caret-down"></i>
             </button>
             <div id="demoAcc" class="w3-hide w3-white w3-card">
@@ -25,18 +26,54 @@
                 <a asp-controller="Book" asp-action="Index" class="w3-bar-item w3-button">List Books</a>
             </div>
 
-                <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button">Authors</a>
+                <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button">
+                        <i class="fa fa-users"></i>
+                    Authors</a>
             <a href="#" class="w3-bar-item w3-button">Link 3</a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                    <form id="logoutForm" asp-controller="Login" asp-action="Logout" method="post" class="form-inline">
+                    @Html.AntiForgeryToken()
+                   <button type="submit" class="w3-bar-item w3-button" id="logout">
+                               <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                       Log Out</button>
+                   </form>
+            }
         </div>
             
 
     }
-        <div class="container-fluid" style="height:60px;">
-                <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
 
-         </div>
+<div class="nav flex-column nav-pills" id="closeButtonsSidebar"
+role="tablist" aria-orientation="vertical">
+    <button class="w3-button w3-teal w3-xlarge" style="background-color:#4723D9 !important;" onclick="w3_open()">☰</button>
 
-           <div class="w3-container">
+   <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home fa-2x" 
+                    aria-hidden="true"></i> </a>
+  <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-users fa-2x"></i> </a>
+    <a class="w3-bar-item w3-button toggle-button-wrapper" id="bookButton">
+        <i class="fa fa-book fa-2x"></i>
+ 
+    </a>
+        <div class="hover-content">
+        <a asp-controller="Book" asp-action="Index" >List Books</a>
+        <a asp-route="addProduct">Create Book</a>
+
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+                        <form id="logoutForm" asp-controller="Login" asp-action="Logout" method="post" class="form-inline">
+                @Html.AntiForgeryToken()
+                       <button type="submit" class="w3-bar-item w3-button" id="logout">
+                                   <i class="fa-solid fa-arrow-right-from-bracket fa-2x"></i>
+                           </button>
+                       </form>
+        }
+
+</div>
+
+   <div class="w3-container">
               <partial name="~/Views/Shared/partials/_headerPartial.cshtml"></partial>
 
             </div>
@@ -45,13 +82,31 @@
             @RenderBody()
         </main>
     </div>
-    <partial name="~/Views/Shared/partials/_footerPartial.cshtml"></partial>
+  @* // <partial name="~/Views/Shared/partials/_footerPartial.cshtml"></partial>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".toggle-button-wrapper").click(function() {
+               if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            $(".hover-content").css("display", "none");
+        } else {
+            $(this).addClass("active");
+            $(".hover-content").css("display", "block");
+        }
+            
+            
+        });
+    });
+</script>
     <script>
+
 function myAccFunc() {
   var x = document.getElementById("demoAcc");
   if (x.className.indexOf("w3-show") == -1) {
@@ -64,17 +119,7 @@ function myAccFunc() {
   }
 }
 
-function myDropFunc() {
-  var x = document.getElementById("demoDrop");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
+
 </script>
 <script>
 function w3_open() {

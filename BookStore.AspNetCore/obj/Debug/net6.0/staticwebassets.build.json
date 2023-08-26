@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P+C2k4oIHcJISA40kjibUCu6iQDBfqYfe9b0mKmvoN4=",
+  "Hash": "23i9+e6c4Vn2TzJDd6fFx6g9YEmDtFNbbz9ezJcfuqI=",
   "Source": "BookStore.AspNetCore",
   "BasePath": "_content/BookStore.AspNetCore",
   "Mode": "Default",
@@ -85,6 +85,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\462affff-1f74-4b09-b2c2-76ac5e32b252.jpeg",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/462affff-1f74-4b09-b2c2-76ac5e32b252.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\462affff-1f74-4b09-b2c2-76ac5e32b252.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\64b8c1cb-f780-47af-af65-6ab5398d861c.jfif",
       "SourceId": "BookStore.AspNetCore",
       "SourceType": "Discovered",
@@ -100,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\64b8c1cb-f780-47af-af65-6ab5398d861c.jfif"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\7f858cf2-ce49-480d-9705-11df4544c09d.jfif",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/7f858cf2-ce49-480d-9705-11df4544c09d.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\7f858cf2-ce49-480d-9705-11df4544c09d.jfif"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\8604ddc7-e1bc-43c6-90fd-65524751f2d4.png",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/8604ddc7-e1bc-43c6-90fd-65524751f2d4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\8604ddc7-e1bc-43c6-90fd-65524751f2d4.png"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\DI.png",

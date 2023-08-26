@@ -31,8 +31,7 @@ namespace BookStore.AspNetCore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(CreateAuthorDto authorDto,int bookId)
         {
-            if (ModelState.IsValid)
-            {
+            
                 var addedAuthor = await _authorService.Add(authorDto);
                 int newAuthorId = addedAuthor.Id;
 
@@ -53,13 +52,6 @@ namespace BookStore.AspNetCore.Controllers
                 }
 
                 return RedirectToAction("Index", "Book");
-            }
-            else
-            {
-                var books = _bookService.GetAll();
-                ViewBag.Books = books;
-                return View("Index");
-            }
         }
     }
 }
