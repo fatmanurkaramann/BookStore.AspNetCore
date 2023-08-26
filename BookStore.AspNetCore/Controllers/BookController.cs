@@ -29,7 +29,7 @@ namespace BookStore.AspNetCore.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(int page =1, int pageSize=3)
+        public IActionResult Index(int page =1, int pageSize=5)
         {
             var bookPagedList = _bookRepository.GetAll().ToPagedList(page,pageSize);
             List<Book> books = bookPagedList.ToList();
@@ -111,8 +111,7 @@ namespace BookStore.AspNetCore.Controllers
         {
             var categories = _categoryService.GetAll();
             ViewBag.Categories = categories;
-            var authors = _authorService.GetAllAuthor();
-            var book = await _bookRepository.GetByIdAsync(id);
+            var book = await _bookRepository.NoTrackingGetByIdAsync(id);
             BookUpdateDto vm = _mapper.Map<BookUpdateDto>(book);
             return View(vm);
         }
