@@ -1,0 +1,70 @@
+﻿@using Business.DTOs
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Scripts
+    {
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                         function LoadComment(){
+                                 $.ajax({
+                                type:"GET",
+                                    url:"/visitor/VisitorCommendList",
+                                success:function(data){
+                                    console.log(data)
+                                         $("#comments").html("");
+                                   $.each(data,(index,item)=>{
+                                       let comment =`
+                                       <div class="card -mt-3">
+                                           <h5>${item.nameSurname}</h5>
+
+                                       <h5>${item.comments}</h5>
+                                       </div>
+                                       `
+                                       $("#comments").append(comment);
+                                   })
+
+                                },
+                                error:function(){}
+                            })
+                        }
+                        LoadComment();
+                $("#btnSave").click(function(){
+
+                    var name = $("#name").val();
+                    var comment = $("#comment").val();
+                        var jsonData = {"NameSurname":name,"comment":comment};
+
+                    $.ajax({
+                        type:"POST",
+                            url:"/visitor/SaveVisitorComment",
+                        data:jsonData,
+                        success:function(data){
+                            console.log(data)
+                                $("#name").val("")
+                                $("#comment").val("");
+                            LoadComment();
+                        
+                        },
+                        error:function(){}
+                    })
+                })
+            })
+        </script>
+}
+<div id="comments">
+</div>
+
+        <div class="form-group">
+        <label class="form-label" for="form6Example1">Name</label>
+            <input name="NameSurname"  id="name"/>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form6Example1">Comment</label>
+
+        <input   id="comment" name="Comment"/>
+    </div>
+    <button id="btnSave" type="button" class="btn btn-info">Kaydet</button>
+

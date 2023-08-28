@@ -41,6 +41,8 @@ namespace BookStore.AspNetCore.Mapping
             CreateMap<CreateAuthorDto, Author>().ReverseMap();
 
 
+            CreateMap<VisitorViewModel, AppUser>().ReverseMap();
+
         }
     }
 
