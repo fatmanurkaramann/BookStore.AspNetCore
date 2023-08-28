@@ -11,6 +11,7 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <ActiveDebugProfile>BookStore.AspNetCore</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\fato\Desktop\Yazılım\C#\BookStoreAspNetCore\BookStore.AspNetCore\BookStore.AspNetCore\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

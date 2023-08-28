@@ -1,0 +1,109 @@
+html {
+  font-size: 14px;
+}
+body{
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (max-width: 420px){
+    html{
+        width:100%;
+        max-width:100%;
+    }
+    body {
+        max-width: 100%;
+        width: 100%;
+        min-width:100%;
+    }
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.w3-sidebar {
+    position: fixed;
+    height: 100%;
+    top: 0px;
+    left: 0;
+}
+.container{
+    margin-left:250px;
+}
+.navbar {
+    margin-left: 40px;
+}
+
+#mySidebar{
+    background-color: #4723D9;
+}
+    #mySidebar a, #booksButton, #logout {
+        padding: 25px;
+        font-family: 'Nunito', sans-serif;
+        color: #AFA5D9;
+        font-size: 1.2rem;
+    }
+#demoAcc a {
+    background-color: #0d6efd;
+}
+i{
+    padding-right:10px;
+}
+
+#logout {
+    bottom: 0px;
+    position: absolute;
+}
+#closeButtonsSidebar a {
+    padding: 25px;
+    color: #AFA5D9;
+
+}
+#closeButtonsSidebar a i{
+    color: #AFA5D9;
+    height:30px;
+}
+#closeButtonsSidebar {
+    position: fixed;
+    background-color: #4723D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+#closeLogout {
+        padding: 15px;
+        color: #AFA5D9;
+    }
+.toggle-button-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-content {
+    display: none;
+    position: absolute;
+    background-color: #4723D9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    top: 220px;
+    right: -126px; /* Linkleri ilk baþta gizle */
+    transition: right 0.3s ease; /* Animasyon efekti */
+}
+
+.toggle-button.active + .hover-content {
+    right: 0; /* Butona týkladýðýnýzda linkleri görünür hale getir */
+}
+
+.hover-content a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
