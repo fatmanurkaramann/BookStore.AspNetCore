@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "23i9+e6c4Vn2TzJDd6fFx6g9YEmDtFNbbz9ezJcfuqI=",
+  "Hash": "oE0NMrzmtaty2Eod+khGEKrGhLWAIJi1vjtrS2LpJBk=",
   "Source": "BookStore.AspNetCore",
   "BasePath": "_content/BookStore.AspNetCore",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\DI.png"
+    },
+    {
+      "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\e7deb435-ba02-409d-8bb7-85f5e1074935.jpeg",
+      "SourceId": "BookStore.AspNetCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\",
+      "BasePath": "_content/BookStore.AspNetCore",
+      "RelativePath": "images/e7deb435-ba02-409d-8bb7-85f5e1074935.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\e7deb435-ba02-409d-8bb7-85f5e1074935.jpeg"
     },
     {
       "Identity": "C:\\Users\\fato\\Desktop\\Yazılım\\C#\\BookStoreAspNetCore\\BookStore.AspNetCore\\BookStore.AspNetCore\\wwwroot\\images\\Ekran görüntüsü 2023-06-16 114504.png",

@@ -15,7 +15,7 @@
      @if (User.Identity.IsAuthenticated)
     {
         <div class="w3-sidebar w3-bar-block w3-light w3-card" style="display:none" id="mySidebar">
-                <button onclick="w3_close()" class="btn btn-primary"><i class="fa-solid fa-x"></i></button>
+                <button onclick="w3_close()" class="btn btn-light"><i class="fa-solid fa-x"></i></button>
                 <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home" 
                     aria-hidden="true"></i>Home Page</a>
                 <a asp-controller="Author" asp-action="Index" class="w3-bar-item w3-button">
@@ -46,7 +46,7 @@
 
 <div class="nav flex-column nav-pills" id="closeButtonsSidebar"
 role="tablist" aria-orientation="vertical">
-    <a class="w3-bar-item w3-button" style="background-color:#4723D9 !important;" onclick="w3_open()">
+    <a class="w3-bar-item w3-button" style="background-color:#E4E4D0 !important;" onclick="w3_open()">
         <i class="fa fa-bars fa-2x" aria-hidden="true" ></i></a>
 
    <a  asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-home fa-2x" 

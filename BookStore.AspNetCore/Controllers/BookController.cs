@@ -29,7 +29,7 @@ namespace BookStore.AspNetCore.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(int page =1, int pageSize=5)
+        public IActionResult Index(int page =1, int pageSize=3)
         {
             var bookPagedList = _bookRepository.GetAll().ToPagedList(page,pageSize);
             List<Book> books = bookPagedList.ToList();
