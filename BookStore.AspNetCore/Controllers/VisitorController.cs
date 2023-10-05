@@ -33,13 +33,11 @@ namespace BookStore.AspNetCore.Controllers
             if (appUser == null)
             {
                  appUser = _mapper.Map<AppUser>(visitorViewModel);
-                appUser.Comments = visitorViewModel.Comment;
                 _dbContext.Add(appUser);
                 _dbContext.SaveChanges();
             }
             else
             {
-                appUser.Comments = visitorViewModel.Comment;
             }
             _dbContext.SaveChanges();
 

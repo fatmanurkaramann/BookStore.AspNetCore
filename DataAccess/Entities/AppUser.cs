@@ -10,6 +10,5 @@ namespace DataAccess.Entities
     public class AppUser: IdentityUser<int>
     {
         public string NameSurname { get; set; }
-        public string Comments { get; set; }
     }
 }

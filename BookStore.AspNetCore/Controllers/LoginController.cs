@@ -36,6 +36,7 @@ namespace BookStore.AspNetCore.Controllers
                     return View();
                 }
             }
+            TempData["error"] = "hata";
             return View();
         }
         [HttpPost]
